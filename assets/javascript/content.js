@@ -63,6 +63,32 @@ $(document).ready(function() {
 
     })
 
+    database.ref().on("value", function(snapshot) {
+    $("#schedule").html("")
+    var sched = snapshot.val()["schedule"];
+    for (var c in sched) {
+
+        var newClassTile = $("<div class='class-tile'>")
+        var newClassTile_style = sched[c][2]
+        var newClassTile_age = sched[c][3]
+        var newClassTile_song = sched[c][4]
+        var newClassTile_other = sched[c][5]
+
+        newClassTile.append("<h4>"+ newClassTile_style + "</h4>")
+        newClassTile.append("<h6>"+ newClassTile_age + "</h6>")
+        newClassTile.append("<h6 class='song'>"+ newClassTile_song + "</h6>")
+        newClassTile.append("<p>"+ newClassTile_other + "</p>")
+
+        console.log(newClassTile)
+        if (newClassTile_style){
+            $(sched[c][1] + ">" + sched[c][0]).append(newClassTile)
+        }
+
+    }
+    });
+
+
+
     // var instructors = {0: {0: "Caley", 1: "caley.jpg", 2: "Manager", 3: "Caley Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. "}, 
     //           1: {0: "Barbara", 1: "mrsg.jpg", 2: "Owner", 3: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. ",  4: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. ",  5: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. "}, 
     //           2: {0: "Caley", 1: "caley.jpg", 2: "Manager", 3: "Caley Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. "}, 

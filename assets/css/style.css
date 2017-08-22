@@ -32,8 +32,8 @@ body, .navbar{
 }
 
 .class-tile{
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 175px;
   overflow: scroll;
   border: solid;
   border-color: grey;
