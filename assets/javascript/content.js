@@ -198,62 +198,154 @@ $(document).ready(function() {
     }
     });
 
-
-
     database.ref().on("value", function(snapshot) {
-    $("#classes").html("")
-    var about_us = snapshot.val()["classes"];
-    for (var b in about_us) {
+    $(".rp-announcements").html("")
+    $("#reg-announce-heading").html("Registration &amp; Payment Announcements")
+    var announce = snapshot.val()["regAnnounce"];
+    for (var a in announce) {
+        var newAnnounce = $('<div class = "rp-announcement">')
+        var newAnnounce_headline = announce[a][0]
+        var newAnnounce_body = announce[a][1]
+        var newAnnounce_date = announce[a][2]
+        
+        newAnnounce.append("<h5 class = 'rp-announcement-headline'> " + newAnnounce_headline +  " </h5>")
+        newAnnounce.append("<p> " + newAnnounce_body +  " </p>")
+        newAnnounce.append('<p class="tiny-text date">' + newAnnounce_date +  '</p>')
 
-        var newTextBlock = $("<div class='row'>")
-        var newTextBlock_heading = about_us[b][0]
-        var newTextBlock_body1 = about_us[b][1]
-        var newTextBlock_body2 = about_us[b][2]
-        var newTextBlock_body3 = about_us[b][3]
-        var newTextBlock_image1 = about_us[b][4]
-        var newTextBlock_image2 = about_us[b][5]
-
-
-        newTextBlock.append("<div class = 'col-md-2 classes-subheading'>" + newTextBlock_heading + "</div>")
-        var text_div = $("<div class = 'col-md-5 classes-block'>")
-        if (newTextBlock_body1){
-            text_div.append(newTextBlock_body1 + "<br><br>")
-        }
-        if (newTextBlock_body2){
-            text_div.append(newTextBlock_body2 + "<br><br>")
-        }
-        if (newTextBlock_body3){
-            text_div.append(newTextBlock_body3 + "<br><br>")
-        }
-
-        newTextBlock.append(text_div)
-      
-        var images_div = $("<div class='col-md-4'>")
-        if (newTextBlock_image1){ 
-            images_div.append("<img class='small-image' src='" + newTextBlock_image1 + "'></div>")
-        }
- 
-        if (newTextBlock_image2){ 
-            images_div.append("<img class='small-image' src='" + newTextBlock_image2 + "'></div>")
-        }
-
-        newTextBlock.append(images_div)
-
-        console.log(newTextBlock)
-        if (newTextBlock_heading){
-            $("#classes").append(newTextBlock)
+        console.log(newAnnounce)
+        if (newAnnounce_headline){
+            $(".rp-announcements").prepend(newAnnounce)
 
         }
 
     }
     });
 
+    database.ref().on("value", function(snapshot) {
+    $("#news").html("")
+    
+    var newsItem = snapshot.val()["news"];
+    for (var n in newsItem) {
+        var newNewsItem = $('<div class="news-box">')
+        var newNewsItem_headline = newsItem[n][0]
+        var newNewsItem_body = newsItem[n][1]
+        var newNewsItem_body2 = newsItem[n][2]
+        var newNewsItem_link = newsItem[n][3]
+        var newNewsItem_linktext = newsItem[n][4]
+        var newNewsItem_image = newsItem[n][5]
+        var newNewsItem_date = newsItem[n][6]
+        
+        newNewsItem.append("<h5 > " + newNewsItem_headline +  " </h5>")
+        newNewsItem.append("<p> " + newNewsItem_body +  " </p>")
+        newNewsItem.append("<p> " + newNewsItem_body2 +  " </p>")
+        newNewsItem.append("<a href = " + newNewsItem_link +  ">" + newNewsItem_linktext+ "</p>")
+        // Need to append image! 
+        newNewsItem.append('<p class="tiny-text date">' + newNewsItem_date +  '</p>')
 
-    <div class = "rp-announcement">
-                      <h5 class = "rp-announcement-headline">Announcement 1 headline </h5>
-                      <p> This section will contain details about the announcement named above. This section will contain details about the announcement named above. This section will contain details about the announcement named above.</p>
-                      <p class="tiny-text date">01/01/01</p>
-                  </div>
+        console.log(newNewsItem)
+        if (newNewsItem_headline){
+            $("#news").prepend(newNewsItem)
+            $("#news").prepend("<br>")
+
+        }
+
+    }
+    });
+
+    database.ref().on("value", function(snapshot) {
+    $("#photos").html("")
+    var photos = snapshot.val()["photos"];
+    for (var p in photos) {
+        var newPhoto = $("<div class='col-sm-5 col-md-3 thumbnail gallery-thumbnail'>")
+        var newPhoto_link = photos[p][0]
+        var newPhoto_caption = photos[p][1]
+    
+        newPhoto.append("<img class='gallery-image' src='" + newPhoto_link + "'>")
+        
+        if (newPhoto_link){
+            $("#photos").prepend(newPhoto)
+
+        }
+
+    }
+    });
+
+    database.ref().on("value", function(snapshot) {
+    $("#dsp-info").html("")
+    var content = snapshot.val()["reg"];
+    for (var row in content) {
+        var newInfo = $("<div class='dsp-info-box'>")
+        var newInfo_heading = content[row][0]
+        console.log(newInfo_heading)
+        var newInfo_body1 = content[row][1]
+        var newInfo_body2 = content[row][2]
+        var newInfo_body3 = content[row][3]
+    
+        newInfo.append("<h4> " + newInfo_heading + " </h4>")
+        if (newInfo_body1){
+            newInfo.append("<p> " + newInfo_body1 + " </p>")
+        }
+        if (newInfo_body2){
+            newInfo.append("<p> " + newInfo_body2 + " </p>")
+        }
+        if (newInfo_body3){
+            newInfo.append("<p> " + newInfo_body3 + " </p>")
+        }
+
+        if (newInfo_heading){
+            $("#dsp-info").append(newInfo)
+
+        }
+
+    }
+    });
+
+    database.ref().on("value", function(snapshot) {
+    $("#contact").html("")
+    var contact = snapshot.val()["contact"];
+    var newContactInfo = $("<div>")
+    var newContactInfo_headline = contact[0][0]
+    var newContactInfo_text = contact[0][1]
+    var newContactInfo_phone = contact[0][2]
+    var newContactInfo_email = contact[0][3]
+    var newContactInfo_facebook = contact[0][4]
+    var newContactInfo_studiost = contact[0][5]
+    var newContactInfo_studiotown = contact[0][6]
+    
+
+    newContactInfo.append("<h2> " + newContactInfo_headline + " </h2>")
+    newContactInfo.append("<div class='container'>")
+    newContactInfo.append("<div class='row'>")
+    newContactInfo.append("<div class='col-m-4'> <span class='glyphicon glyphicon-phone-alt giant-glyph'></span> </div>")
+    newContactInfo.append("<div class='col-m-6'><h5>"+ newContactInfo_phone + "</h5></div>")
+
+    newContactInfo.append("<div class='row'>")
+    newContactInfo.append("<div class='col-m-4'> <span class='glyphicon glyphicon-envelope giant-glyph'></span> </div>")
+    newContactInfo.append("<div class='col-m-6'><h5>"+ newContactInfo_email + "</h5></div>")
+    
+    newContactInfo.append("<div class='row'>")
+    newContactInfo.append("<div class='col-m-4'> <img class='icon' src = 'https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/facebook-256.png' </div>")
+    newContactInfo.append("<div class='col-m-6'><h5><a href='"+ newContactInfo_facebook + "'> "+ newContactInfo_facebook + " </a> </h5></div>")
+
+    newContactInfo.append("<div class='row'>")
+    newContactInfo.append("<div class='col-m-4'> <span class='glyphicon glyphicon-home giant-glyph'></span> </div>")
+    newContactInfo.append("<div class='col-m-6'><h5>"+ newContactInfo_studiost + "</h5> <h5>"+ newContactInfo_studiotown + "</h5></div>")
+    
+    newContactInfo.append("<div class='row'> <div class='col-m-4'>")
+    newContactInfo.append("<div class='col-m-4'>")
+
+
+    $("#contact").append(newContactInfo)
+
+    });
+
+
+
+    // <div class = "rp-announcement">
+    //                   <h5 class = "rp-announcement-headline">Announcement 1 headline </h5>
+    //                   <p> This section will contain details about the announcement named above. This section will contain details about the announcement named above. This section will contain details about the announcement named above.</p>
+    //                   <p class="tiny-text date">01/01/01</p>
+    //               </div>
 
 
     // var instructors = {0: {0: "Caley", 1: "caley.jpg", 2: "Manager", 3: "Caley Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. "}, 
@@ -269,7 +361,7 @@ $(document).ready(function() {
         //       <div class="thumbnail">
         //     <img src="..." alt="...">
         //     <div class="caption">
-        //       <h3>Thumbnail label</h3>
+        //       <h5>Thumbnail label</h3>
         //       <p>...</p>
         //       <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
         //     </div>

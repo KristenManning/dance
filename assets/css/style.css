@@ -37,7 +37,34 @@ body, .navbar{
   color: white;
   margin: 1%;
 }
+.gallery-image{
+  height: 180px;
+  width: auto;
+}
 
+.icon{
+  height: 100px;
+  width: auto;
+}
+
+#contact{
+  text-align: center;
+}
+
+.giant-glyph{
+  font-size: 60px;
+}
+
+.gallery-thumbnail{
+  max-height: 200px;
+
+}
+
+
+.news-box{
+  background-color: #5e285d;
+  padding: 1%;
+}
 .about-image{
   padding: 1%;
   margin: 1%;
