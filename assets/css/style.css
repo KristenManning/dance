@@ -18,10 +18,73 @@ body, .navbar{
 
 .about-block{
   padding: 1%;
-  background: #745574;
-  opacity: 0.7;
+  background: #BBA2C5;
+  opacity: 0.8;
   font-size: 18px;
   color: white;
+}
+
+.ballet-color{
+  color: #E84B30;
+
+}
+
+.tap-color{
+  color: #FFD432;
+}
+
+.pointe-color{
+  color: #49E83E;
+}
+
+.jazz-color{
+  color: #44CCBC;
+}
+
+.combo-color{
+  color: #1482CC;
+}
+
+.ballet-background{
+  background-color: #E84B30;
+
+}
+
+.tap-background{
+
+}
+
+.pointe-background{
+
+}
+
+.jazz-background{
+
+}
+
+.combo-background{
+
+}
+
+.ballet-border{
+  border-color: #E84B30;
+
+}
+
+.tap-border{
+
+}
+
+.pointe-border{
+
+}
+
+.jazz-border{
+
+}
+
+.combo-border{
+
 }
 
 .classes-subheading{
@@ -52,7 +115,7 @@ body, .navbar{
 }
 
 .giant-glyph{
-  font-size: 60px;
+  font-size: 100px;
 }
 
 .gallery-thumbnail{
@@ -61,9 +124,23 @@ body, .navbar{
 }
 
 
+.contact-text{
+  font-size: 18px;
+  color: white;
+}
+
+
 .news-box{
-  background-color: #5e285d;
-  padding: 1%;
+  background-color: #1482CC;
+  padding: 2%;
+}
+
+.news-box>p{
+  color: black;
+}
+
+.news-box>a{
+  color: white;
 }
 .about-image{
   padding: 1%;
@@ -109,7 +186,6 @@ body, .navbar{
   height: 175px;
   overflow: scroll;
   border: solid;
-  border-color: grey;
   padding: 2%;
 }
 
@@ -193,10 +269,14 @@ a{
 }
 
 .rp-announcement{
-  background-color: yellow;
+  background-color: #49E83E;
   padding: 10px;
   margin: 2%;
   opacity: 0.9;
+}
+
+.rp-announcement>p{
+  color: white;
 }
 
 .rp-announcement-headline{

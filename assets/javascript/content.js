@@ -301,9 +301,9 @@ $(document).ready(function() {
     });
 
     database.ref().on("value", function(snapshot) {
-    $("#contact").html("")
+    // $("#contact").html("")
     var contact = snapshot.val()["contact"];
-    var newContactInfo = $("<div>")
+   
     var newContactInfo_headline = contact[0][0]
     var newContactInfo_text = contact[0][1]
     var newContactInfo_phone = contact[0][2]
@@ -312,30 +312,14 @@ $(document).ready(function() {
     var newContactInfo_studiost = contact[0][5]
     var newContactInfo_studiotown = contact[0][6]
     
+    $(".contact-headline").text(newContactInfo_headline)
+    $(".contact-text").text(newContactInfo_text)
+    $(".phone").text(newContactInfo_phone)
+    $(".email").text(newContactInfo_email)
+    $(".facebook").text(newContactInfo_facebook)
+    $(".studiost").text(newContactInfo_studiost)
+    $(".studiost").text(newContactInfo_studiost)
 
-    newContactInfo.append("<h2> " + newContactInfo_headline + " </h2>")
-    newContactInfo.append("<div class='container'>")
-    newContactInfo.append("<div class='row'>")
-    newContactInfo.append("<div class='col-m-4'> <span class='glyphicon glyphicon-phone-alt giant-glyph'></span> </div>")
-    newContactInfo.append("<div class='col-m-6'><h5>"+ newContactInfo_phone + "</h5></div>")
-
-    newContactInfo.append("<div class='row'>")
-    newContactInfo.append("<div class='col-m-4'> <span class='glyphicon glyphicon-envelope giant-glyph'></span> </div>")
-    newContactInfo.append("<div class='col-m-6'><h5>"+ newContactInfo_email + "</h5></div>")
-    
-    newContactInfo.append("<div class='row'>")
-    newContactInfo.append("<div class='col-m-4'> <img class='icon' src = 'https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/facebook-256.png' </div>")
-    newContactInfo.append("<div class='col-m-6'><h5><a href='"+ newContactInfo_facebook + "'> "+ newContactInfo_facebook + " </a> </h5></div>")
-
-    newContactInfo.append("<div class='row'>")
-    newContactInfo.append("<div class='col-m-4'> <span class='glyphicon glyphicon-home giant-glyph'></span> </div>")
-    newContactInfo.append("<div class='col-m-6'><h5>"+ newContactInfo_studiost + "</h5> <h5>"+ newContactInfo_studiotown + "</h5></div>")
-    
-    newContactInfo.append("<div class='row'> <div class='col-m-4'>")
-    newContactInfo.append("<div class='col-m-4'>")
-
-
-    $("#contact").append(newContactInfo)
 
     });
 
