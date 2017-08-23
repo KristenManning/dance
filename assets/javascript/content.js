@@ -69,11 +69,12 @@ $(document).ready(function() {
     var sched = snapshot.val()["schedule"];
     for (var c in sched) {
 
-        var newClassTile = $("<div class='class-tile'>")
+        var newClassTile = $("<div class='class-tile " + sched[c][6] +"-color'>")
         var newClassTile_style = sched[c][2]
         var newClassTile_age = sched[c][3]
         var newClassTile_song = sched[c][4]
         var newClassTile_other = sched[c][5]
+        var styling = sched[c][6]
 
         newClassTile.append("<h4>"+ newClassTile_style + "</h4>")
         newClassTile.append("<h6>"+ newClassTile_age + "</h6>")
@@ -152,20 +153,22 @@ $(document).ready(function() {
 
     database.ref().on("value", function(snapshot) {
     $("#classes").html("")
-    var about_us = snapshot.val()["classes"];
-    for (var b in about_us) {
+    var classes = snapshot.val()["classes"];
+    for (var b in classes) {
 
         var newTextBlock = $("<div class='row'>")
-        var newTextBlock_heading = about_us[b][0]
-        var newTextBlock_body1 = about_us[b][1]
-        var newTextBlock_body2 = about_us[b][2]
-        var newTextBlock_body3 = about_us[b][3]
-        var newTextBlock_image1 = about_us[b][4]
-        var newTextBlock_image2 = about_us[b][5]
+        var newTextBlock_heading = classes[b][0]
+        var newTextBlock_body1 = classes[b][1]
+        var newTextBlock_body2 = classes[b][2]
+        var newTextBlock_body3 = classes[b][3]
+        var newTextBlock_image1 = classes[b][4]
+        var newTextBlock_image2 = classes[b][5]
+        var styling = classes[b][6]
 
 
-        newTextBlock.append("<div class = 'col-md-2 classes-subheading'>" + newTextBlock_heading + "</div>")
-        var text_div = $("<div class = 'col-md-5 classes-block'>")
+
+        newTextBlock.append("<div class = 'col-md-2 classes-subheading "+ styling +"-color'>" + newTextBlock_heading + "</div>")
+        var text_div = $("<div class = 'col-md-5 classes-block " + styling + "-background'>")
         if (newTextBlock_body1){
             text_div.append(newTextBlock_body1 + "<br><br>")
         }
@@ -194,6 +197,9 @@ $(document).ready(function() {
             $("#classes").append(newTextBlock)
 
         }
+
+    $(".classes-block:contains('ballet ')").addClass("ballet-background")
+
 
     }
     });
