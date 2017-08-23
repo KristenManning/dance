@@ -48,6 +48,7 @@ $(document).ready(function() {
         var newInstructor = $("<div class='col-sm-5 col-md-3 thumbnail'>")
         var newInstructor_name = instructors[i][0]
         var newInstructor_image = instructors[i][1]
+        console.log(newInstructor_image)
         var newInstructor_role = instructors[i][2]
         var newInstructor_bios = [instructors[i][3], instructors[i][4], instructors[i][5], instructors[i][6], instructors[i][7]]
         newInstructor.html("<img src='assets/images/" + newInstructor_image + "'><h3> " + newInstructor_name + " </h3> <h5>" + newInstructor_role + "</h5>")
@@ -77,7 +78,7 @@ $(document).ready(function() {
         newClassTile.append("<h4>"+ newClassTile_style + "</h4>")
         newClassTile.append("<h6>"+ newClassTile_age + "</h6>")
         newClassTile.append("<h6 class='song'>"+ newClassTile_song + "</h6>")
-        newClassTile.append("<p>"+ newClassTile_other + "</p>")
+        newClassTile.append("<p class='tiny-text'>"+ newClassTile_other + "</p>")
 
         console.log(newClassTile)
         if (newClassTile_style){
@@ -87,6 +88,172 @@ $(document).ready(function() {
     }
     });
 
+    database.ref().on("value", function(snapshot) {
+    $("#about").html("")
+    var about_us = snapshot.val()["about"];
+    for (var b in about_us) {
+
+        var newTextBlock = $("<div class='row'>")
+        var newTextBlock_heading = about_us[b][0]
+        var newTextBlock_body1 = about_us[b][1]
+        var newTextBlock_body2 = about_us[b][2]
+        var newTextBlock_body3 = about_us[b][3]
+        var newTextBlock_body4 = about_us[b][4]
+        var newTextBlock_image1 = about_us[b][5]
+        var newTextBlock_image2 = about_us[b][6]
+        var newTextBlock_image3 = about_us[b][7]
+        var newTextBlock_image4 = about_us[b][8]
+
+
+        newTextBlock.append("<div class = 'col-md-12 about-subheading'>" + newTextBlock_heading + "</div>")
+        var text_div = $("<div class = 'col-md-7 about-block'>")
+        if (newTextBlock_body1){
+            text_div.append(newTextBlock_body1 + "<br><br>")
+        }
+        if (newTextBlock_body2){
+            text_div.append(newTextBlock_body2 + "<br><br>")
+        }
+        if (newTextBlock_body3){
+            text_div.append(newTextBlock_body3 + "<br><br>")
+        }
+        if (newTextBlock_body4){
+            text_div.append(newTextBlock_body4)
+        }
+
+        newTextBlock.append(text_div)
+      
+        var images_div = $("<div class='col-md-4'>")
+        if (newTextBlock_image1){ 
+            images_div.append("<img class='small-image' src='" + newTextBlock_image1 + "'></div>")
+        }
+ 
+        if (newTextBlock_image2){ 
+            images_div.append("<img class='small-image' src='" + newTextBlock_image2 + "'></div>")
+        }
+
+        if (newTextBlock_image3){ 
+            images_div.append("<img class='small-image' src='" + newTextBlock_image3 + "'></div>")
+        }
+
+        if (newTextBlock_image4){ 
+            images_div.append("<img class='small-image' src='" + newTextBlock_image4 + "'></div>")
+        }
+        
+        newTextBlock.append(images_div)
+
+        console.log(newTextBlock)
+        if (newTextBlock_heading){
+            $("#about").append(newTextBlock)
+
+        }
+
+    }
+    });
+
+    database.ref().on("value", function(snapshot) {
+    $("#classes").html("")
+    var about_us = snapshot.val()["classes"];
+    for (var b in about_us) {
+
+        var newTextBlock = $("<div class='row'>")
+        var newTextBlock_heading = about_us[b][0]
+        var newTextBlock_body1 = about_us[b][1]
+        var newTextBlock_body2 = about_us[b][2]
+        var newTextBlock_body3 = about_us[b][3]
+        var newTextBlock_image1 = about_us[b][4]
+        var newTextBlock_image2 = about_us[b][5]
+
+
+        newTextBlock.append("<div class = 'col-md-2 classes-subheading'>" + newTextBlock_heading + "</div>")
+        var text_div = $("<div class = 'col-md-5 classes-block'>")
+        if (newTextBlock_body1){
+            text_div.append(newTextBlock_body1 + "<br><br>")
+        }
+        if (newTextBlock_body2){
+            text_div.append(newTextBlock_body2 + "<br><br>")
+        }
+        if (newTextBlock_body3){
+            text_div.append(newTextBlock_body3 + "<br><br>")
+        }
+
+        newTextBlock.append(text_div)
+      
+        var images_div = $("<div class='col-md-4'>")
+        if (newTextBlock_image1){ 
+            images_div.append("<img class='small-image' src='" + newTextBlock_image1 + "'></div>")
+        }
+ 
+        if (newTextBlock_image2){ 
+            images_div.append("<img class='small-image' src='" + newTextBlock_image2 + "'></div>")
+        }
+
+        newTextBlock.append(images_div)
+
+        console.log(newTextBlock)
+        if (newTextBlock_heading){
+            $("#classes").append(newTextBlock)
+
+        }
+
+    }
+    });
+
+
+
+    database.ref().on("value", function(snapshot) {
+    $("#classes").html("")
+    var about_us = snapshot.val()["classes"];
+    for (var b in about_us) {
+
+        var newTextBlock = $("<div class='row'>")
+        var newTextBlock_heading = about_us[b][0]
+        var newTextBlock_body1 = about_us[b][1]
+        var newTextBlock_body2 = about_us[b][2]
+        var newTextBlock_body3 = about_us[b][3]
+        var newTextBlock_image1 = about_us[b][4]
+        var newTextBlock_image2 = about_us[b][5]
+
+
+        newTextBlock.append("<div class = 'col-md-2 classes-subheading'>" + newTextBlock_heading + "</div>")
+        var text_div = $("<div class = 'col-md-5 classes-block'>")
+        if (newTextBlock_body1){
+            text_div.append(newTextBlock_body1 + "<br><br>")
+        }
+        if (newTextBlock_body2){
+            text_div.append(newTextBlock_body2 + "<br><br>")
+        }
+        if (newTextBlock_body3){
+            text_div.append(newTextBlock_body3 + "<br><br>")
+        }
+
+        newTextBlock.append(text_div)
+      
+        var images_div = $("<div class='col-md-4'>")
+        if (newTextBlock_image1){ 
+            images_div.append("<img class='small-image' src='" + newTextBlock_image1 + "'></div>")
+        }
+ 
+        if (newTextBlock_image2){ 
+            images_div.append("<img class='small-image' src='" + newTextBlock_image2 + "'></div>")
+        }
+
+        newTextBlock.append(images_div)
+
+        console.log(newTextBlock)
+        if (newTextBlock_heading){
+            $("#classes").append(newTextBlock)
+
+        }
+
+    }
+    });
+
+
+    <div class = "rp-announcement">
+                      <h5 class = "rp-announcement-headline">Announcement 1 headline </h5>
+                      <p> This section will contain details about the announcement named above. This section will contain details about the announcement named above. This section will contain details about the announcement named above.</p>
+                      <p class="tiny-text date">01/01/01</p>
+                  </div>
 
 
     // var instructors = {0: {0: "Caley", 1: "caley.jpg", 2: "Manager", 3: "Caley Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. "}, 

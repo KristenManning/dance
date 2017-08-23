@@ -16,6 +16,52 @@ body, .navbar{
 
 }
 
+.about-block{
+  padding: 1%;
+  background: #745574;
+  opacity: 0.7;
+  font-size: 18px;
+  color: white;
+}
+
+.classes-subheading{
+  font-size: 26px;
+  color: white;
+  margin: 10px;
+}
+.classes-block{
+  padding: 1%;
+  background: #745574;
+  opacity: 0.7;
+  font-size: 18px;
+  color: white;
+  margin: 1%;
+}
+
+.about-image{
+  padding: 1%;
+  margin: 1%;
+}
+
+.about-subheading{
+  font-size: 28px;
+  color: white;
+  font-weight: bold;
+  margin: 1%;
+}
+
+.small-image{
+  max-width: 400px; 
+  max-height: 400px;
+  margin: 2%;
+/*  --box-shadow-color-1: #5e285d;
+  --box-shadow-color-2: #262626;
+  box-shadow: 0 2px 4px 0 var(--box-shadow-color), 0 3px 4px 0 var(--box-shadow-color);
+  box-shadow: 0 4px 8px 0 var(--box-shadow-color-1), 0 6px 20px 0 var(--box-shadow-color-2) ;
+*/
+
+}
+
 .class-style{
   padding: 2%;
 }
@@ -38,6 +84,16 @@ body, .navbar{
   border: solid;
   border-color: grey;
   padding: 2%;
+}
+
+.song{
+  font-style: italic;
+}
+
+.class-time{
+  font-size: 24px;
+  font-weight: bold;
+
 }
 
 /*.current-rp-announcements{
