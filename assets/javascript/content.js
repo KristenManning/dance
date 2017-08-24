@@ -324,7 +324,7 @@ $(document).ready(function() {
     $(".email").text(newContactInfo_email)
     $(".facebook").text(newContactInfo_facebook)
     $(".studiost").text(newContactInfo_studiost)
-    $(".studiost").text(newContactInfo_studiost)
+    $(".studiotown").text(newContactInfo_studiotown)
 
 
     });
