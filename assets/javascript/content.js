@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-  console.log("hi")
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyD8J6gNDFLxiT-W3QgLpP83TQ6NJ5cWIeo",
@@ -24,6 +24,11 @@ $(document).ready(function() {
 
     // })
 
+    database.ref().on("value", function(snapshot) {
+        var headings = snapshot.val()["pageHeadings"];
+        $("#nav-and-news").html(headings[3][1])
+
+    })
     database.ref().on("value", function(snapshot) {
         var headings = snapshot.val()["pageHeadings"];
         for (h in headings[2]){
@@ -152,57 +157,80 @@ $(document).ready(function() {
     });
 
     database.ref().on("value", function(snapshot) {
-    $("#classes").html("")
+    // $("#classes").html("")
     var classes = snapshot.val()["classes"];
-    for (var b in classes) {
+    $("#section1 tab1").html = classes[0][0]
 
-        var newTextBlock = $("<div class='row'>")
-        var newTextBlock_heading = classes[b][0]
-        var newTextBlock_body1 = classes[b][1]
-        var newTextBlock_body2 = classes[b][2]
-        var newTextBlock_body3 = classes[b][3]
-        var newTextBlock_image1 = classes[b][4]
-        var newTextBlock_image2 = classes[b][5]
-        var styling = classes[b][6]
+    // for (i in classes) {
+
+    //     var newTextBlock = $("<div class='row'>")
+    //     var newTextBlock_heading = classes[b][0]
+    //     var newTextBlock_body1 = classes[b][1]
+    //     var newTextBlock_body2 = classes[b][2]
+    //     var newTextBlock_body3 = classes[b][3]
+    //     var newTextBlock_image1 = classes[b][4]
+    //     var newTextBlock_image2 = classes[b][5]
+    //     var styling = classes[b][6]
 
 
 
-        newTextBlock.append("<div class = 'col-md-2 classes-subheading "+ styling +"-color'>" + newTextBlock_heading + "</div>")
-        var text_div = $("<div class = 'col-md-5 classes-block " + styling + "-background'>")
-        if (newTextBlock_body1){
-            text_div.append(newTextBlock_body1 + "<br><br>")
-        }
-        if (newTextBlock_body2){
-            text_div.append(newTextBlock_body2 + "<br><br>")
-        }
-        if (newTextBlock_body3){
-            text_div.append(newTextBlock_body3 + "<br><br>")
-        }
+    //     newTextBlock.append("<div class = 'col-md-2 classes-subheading "+ styling +"-color'>" + newTextBlock_heading + "</div>")
+    //     var text_div = $("<div class = 'col-md-5 classes-block " + styling + "-background'>")
+    //     if (newTextBlock_body1){
+    //         text_div.append(newTextBlock_body1 + "<br><br>")
+    //     }
+    //     if (newTextBlock_body2){
+    //         text_div.append(newTextBlock_body2 + "<br><br>")
+    //     }
+    //     if (newTextBlock_body3){
+    //         text_div.append(newTextBlock_body3 + "<br><br>")
+    //     }
 
-        newTextBlock.append(text_div)
+    //     newTextBlock.append(text_div)
       
-        var images_div = $("<div class='col-md-4'>")
-        if (newTextBlock_image1){ 
-            images_div.append("<img class='small-image' src='" + newTextBlock_image1 + "'></div>")
-        }
+    //     var images_div = $("<div class='col-md-4'>")
+    //     if (newTextBlock_image1){ 
+    //         images_div.append("<img class='small-image' src='" + newTextBlock_image1 + "'></div>")
+    //     }
  
-        if (newTextBlock_image2){ 
-            images_div.append("<img class='small-image' src='" + newTextBlock_image2 + "'></div>")
-        }
+    //     if (newTextBlock_image2){ 
+    //         images_div.append("<img class='small-image' src='" + newTextBlock_image2 + "'></div>")
+    //     }
 
-        newTextBlock.append(images_div)
+    //     newTextBlock.append(images_div)
 
-        console.log(newTextBlock)
-        if (newTextBlock_heading){
-            $("#classes").append(newTextBlock)
+    //     console.log(newTextBlock)
+    //     if (newTextBlock_heading){
+    //         $("#classes").append(newTextBlock)
 
-        }
+    //     }
 
     $(".classes-block:contains('ballet ')").addClass("ballet-background")
 
 
-    }
+    
     });
+
+    function openClass(className) {
+    var i;
+    var x = document.getElementsByClassName("class-tab");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none"; 
+    }
+    document.getElementById(className).style.display = "block"; 
+
+
+    }
+    $(".tab-button").click(function() {
+        var label = $(this).context.textContent
+        console.log(label)
+        openClass(label);
+    });
+
+    // $('#section1 #tab2').click(function (e) {
+    //   e.preventDefault()
+    //   $(this).tab('show')
+    // })
 
     database.ref().on("value", function(snapshot) {
     $(".rp-announcements").html("")
