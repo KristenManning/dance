@@ -48,15 +48,14 @@ $(document).ready(function() {
 
     for (var i in instructors) {
       if (instructors[i][0] && instructors[i][0] != "FullName"){
-        console.log(i)
-        console.log()
+
         var newInstructor = $("<div class='col-sm-5 col-md-3 thumbnail'>")
         var newInstructor_name = instructors[i][0]
         var newInstructor_image = instructors[i][1]
         console.log(newInstructor_image)
         var newInstructor_role = instructors[i][2]
         var newInstructor_bios = [instructors[i][3], instructors[i][4], instructors[i][5], instructors[i][6], instructors[i][7]]
-        newInstructor.html("<img src='assets/images/" + newInstructor_image + "'><h3> " + newInstructor_name + " </h3> <h5>" + newInstructor_role + "</h5>")
+        newInstructor.html("<img src='assets/images/" + newInstructor_image + "'><h4> " + newInstructor_name + " </h4> <h5>" + newInstructor_role + "</h5>")
         for (b in newInstructor_bios){
           if (newInstructor_bios[b]){
             newInstructor.append("<p>" + newInstructor_bios[b] + "</p>")
@@ -81,9 +80,9 @@ $(document).ready(function() {
         var newClassTile_other = sched[c][5]
         var styling = sched[c][6]
 
-        newClassTile.append("<h4>"+ newClassTile_style + "</h4>")
+        newClassTile.append("<h6>"+ newClassTile_style + "</h6>")
         newClassTile.append("<h6>"+ newClassTile_age + "</h6>")
-        newClassTile.append("<h6 class='song'>"+ newClassTile_song + "</h6>")
+        newClassTile.append("<p class='song tiny-text'>"+ newClassTile_song + "</p>")
         newClassTile.append("<p class='tiny-text'>"+ newClassTile_other + "</p>")
 
         console.log(newClassTile)
@@ -95,65 +94,57 @@ $(document).ready(function() {
     });
 
     database.ref().on("value", function(snapshot) {
-    $("#about").html("")
-    var about_us = snapshot.val()["about"];
-    for (var b in about_us) {
-
-        var newTextBlock = $("<div class='row'>")
-        var newTextBlock_heading = about_us[b][0]
-        var newTextBlock_body1 = about_us[b][1]
-        var newTextBlock_body2 = about_us[b][2]
-        var newTextBlock_body3 = about_us[b][3]
-        var newTextBlock_body4 = about_us[b][4]
-        var newTextBlock_image1 = about_us[b][5]
-        var newTextBlock_image2 = about_us[b][6]
-        var newTextBlock_image3 = about_us[b][7]
-        var newTextBlock_image4 = about_us[b][8]
+        var about_us = snapshot.val()["about"];
 
 
-        newTextBlock.append("<div class = 'col-md-12 about-subheading'>" + newTextBlock_heading + "</div>")
-        var text_div = $("<div class = 'col-md-7 about-block'>")
-        if (newTextBlock_body1){
-            text_div.append(newTextBlock_body1 + "<br><br>")
-        }
-        if (newTextBlock_body2){
-            text_div.append(newTextBlock_body2 + "<br><br>")
-        }
-        if (newTextBlock_body3){
-            text_div.append(newTextBlock_body3 + "<br><br>")
-        }
-        if (newTextBlock_body4){
-            text_div.append(newTextBlock_body4)
-        }
-
-        newTextBlock.append(text_div)
+        var etiquette = ["dancer", "studio", "waiting-room", "changing-room", "recital"]
       
-        var images_div = $("<div class='col-md-4'>")
-        if (newTextBlock_image1){ 
-            images_div.append("<img class='small-image' src='" + newTextBlock_image1 + "'></div>")
-        }
- 
-        if (newTextBlock_image2){ 
-            images_div.append("<img class='small-image' src='" + newTextBlock_image2 + "'></div>")
+        function display_buttons(){
+          $(".buttons-div").html("")
+            for (e in etiquette){
+            $(".buttons-div").append('<button class="btn btn-etiquette" data-etiquetteType="'+ parseInt(parseInt(e) + 3)+'">'+about_us[parseInt(e)+3][0]+'</button><br>')
+          }
         }
 
-        if (newTextBlock_image3){ 
-            images_div.append("<img class='small-image' src='" + newTextBlock_image3 + "'></div>")
+        display_buttons()
+
+        $('.buttons-div').on("click", ".btn-etiquette", function() {
+
+              var etiquetteType = $(this).data().etiquettetype;
+              for (var i = 1; i < 7; i++) {
+                $(".tabbed-content-" + i).html(about_us[etiquetteType][i])
+              }
+        });
+
+        for (var i = 1; i < 7; i++) {
+            $(".tabbed-content-" + i).html(about_us[3][i])
         }
 
-        if (newTextBlock_image4){ 
-            images_div.append("<img class='small-image' src='" + newTextBlock_image4 + "'></div>")
+
+    // section 1 (About the Studio) heading tile
+    $("#about-subheading-1").html("<p class='about-subheading'>" + about_us[0][0] + "</p>")
+    // section 2 (Our Mission) heading tile
+    $("#about-subheading-2").html("<p class='about-subheading'>" + about_us[1][0] + "</p>")
+
+    // section 1 content 
+    $("#about-section-1").html("")
+        for (var i = 1; i < 5; i++) {
+            var new_content = about_us[0][i]
+            if (new_content){
+                $("#about-section-1").append(new_content)
         }
-        
-        newTextBlock.append(images_div)
-
-        console.log(newTextBlock)
-        if (newTextBlock_heading){
-            $("#about").append(newTextBlock)
-
-        }
-
     }
+
+    // section 2 content 
+    $("#about-section-2").html("")
+        for (var i = 1; i < 5; i++) {
+            var new_content = about_us[1][i]
+            if (new_content){
+                $("#about-section-2").append(new_content)
+        }
+    }
+    
+        
     });
 
     database.ref().on("value", function(snapshot) {

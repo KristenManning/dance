@@ -1,5 +1,22 @@
+/*Dark Grey-Purple : #44435E*/
+/*Pink Purple : #9C88C7*/
+/*Medium Grey-Purple: #696791; */
+/*Light Grey-Purple: #97A2C7*/
+/*Light Blue: #A9C2DE*/
 
+/*Overcast: #9099A2*/
+/*Paper: #D5D5D5*/
+/*Dusty: #96858F*/
+/*orange: #FC8A7B*/
 
+/*Light Green: #9FDD92*/
+/*Dark Green: #80A368*/
+/*Bright Pink: #A578C4*/
+/*Dusty Pink: #88689E*/
+/*Dark greyblue: #68829e*/
+/*Brighter pink: #A7628B*/
+/*pastel teal blue: 83EBF3*/
+/*Soft Purple*/
 body, html {
     height: 100%;
 }
@@ -19,6 +36,11 @@ body {
     background-blend-mode: multiply;
     background-attachment: fixed;
 }
+
+#about-heading{
+  margin: none;
+  text-align: center;
+}
 #nav-and-news {
   position: fixed;
   z-index: 3;
@@ -31,22 +53,22 @@ body {
   position: relative;
 }*/
 .news-ticker{
-  background-color: #2E2940;
+  background-color: #44435E;
   height: 150px;
   vertical-align: middle;
   text-align: center;
   padding: 10px;
-  color: white;
+  color: #D5D5D5;
 }
 
 @media (min-width: 768px) {
     .news-ticker{
-      background-color: #2E2940;
+      background-color: #44435E;
       height: 150px;
       vertical-align: middle;
       text-align: center;
       padding: 10px;
-      color: white;
+      color: #D5D5D5;
     }
 }
 
@@ -65,58 +87,71 @@ body {
 
 }
 
-.about-block{
-  padding: 1%;
-  background: #1482CC;
+#about-subheading-1, #about-subheading-2, #about-subheading-etiquette{
+  padding: 2%;
   font-size: 18px;
-  color: white;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  font-style:bold;
+}
+
+#about-section-1, #about-section-2, .about-section-etiquette{
+  padding: 2%;
+}
+
+.about-block{
+  padding: 3%;
+  font-size: 18px;
+  color: #D5D5D5;
+
 }
 
 .ballet-color{
-  color: #E84B30;
+  color: #A578C4;
 
 }
 
 .tap-color{
-  color: #FFD432;
+  color: #9FDD92;
 }
 
 .pointe-color{
-  color: #49E83E;
+  color: #A7628B;
 }
 
 .jazz-color{
-  color: #44CCBC;
+  color: #FC8A7B;
 }
 
 .combo-color{
-  color: #1482CC;
+  color: #83EBF3;
 }
 
 .ballet-background{
-  background-color: #E84B30;
+  background-color: #A578C4;
 }
 
 .tap-background{
-  background-color: #FFD432;
+  background-color: #9FDD92;
 }
 
 .pointe-background{
-  background-color: #49E83E;
+  background-color: #A7628B;
 }
 
 .jazz-background{
-  background-color: #44CCBC;
+  background-color: #FC8A7B;
 }
 
 .combo-background{
-  background-color: #1482CC;
+  background-color: #83EBF3;
 }
 
 
 .classes-subheading{
   font-size: 26px;
-  color: white;
+  color: #D5D5D5;
   margin: 10px;
 }
 .classes-block{
@@ -124,7 +159,7 @@ body {
 
   opacity: 0.7;
   font-size: 18px;
-  color: white;
+  color: #D5D5D5;
   margin: 1%;
 }
 .gallery-image{
@@ -153,40 +188,34 @@ body {
 
 .contact-text{
   font-size: 18px;
-  color: white;
+  color: #D5D5D5;
 }
 
 
 .news-box{
-  background-color: #1482CC;
+  background-color: #83EBF3;
   padding: 2%;
 }
 
 .news-box>p{
-  color: #2E2940;
+  color: #44435E;
 }
 
 .news-box>a{
-  color: white;
+  color: #D5D5D5;
 }
 .about-image{
   padding: 1%;
   margin: 1%;
 }
 
-.about-subheading{
-  font-size: 28px;
-  color: white;
-  font-weight: bold;
-  margin: 1%;
-}
 
 .small-image{
-  max-width: 400px; 
-  max-height: 400px;
+  max-width: 250px; 
+  max-height: 250px;
   margin: 2%;
 /*  --box-shadow-color-1: #5e285d;
-  --box-shadow-color-2: #688EA6;
+  --box-shadow-color-2: #97A2C7;
   box-shadow: 0 2px 4px 0 var(--box-shadow-color), 0 3px 4px 0 var(--box-shadow-color);
   box-shadow: 0 4px 8px 0 var(--box-shadow-color-1), 0 6px 20px 0 var(--box-shadow-color-2) ;
 */
@@ -202,8 +231,8 @@ body {
 
 
 .tiny-text{
-  font-size: 10px;
-  color: white;
+  font-size: 8px;
+  color: #D5D5D5;
 }
 
 .dsp-info, .current-rp-announcements{
@@ -211,11 +240,15 @@ body {
 }
 
 .class-tile{
-  width: 100px;
-  height: 80px;
+  width: 160px;
+  height: 90px;
   overflow: scroll;
   border: solid;
   padding: 2%;
+}
+
+.class-tile>p, .class-tile>h6, .class-tile>.tiny-text{
+  color: black;
 }
 
 .song{
@@ -223,8 +256,9 @@ body {
 }
 
 .class-time{
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
+  color: black;
 
 }
 
@@ -245,30 +279,58 @@ body, html{
   margin-top: 250px;
   margin-left: 15%;
   margin-right: 15%;
-  background-color: #2E2940;
+  background-color: #44435E;
   opacity: 0.9;
 }
+
+
+
+table{
+  background-color: #97A2C7;
+  color: black;
+}
+@media (max-width: 768px) {
+    .main-content{
+      width: 90%;
+      margin-top: 250px;
+      margin-left: 5%;
+      margin-right: 5%;
+      background-color: #44435E;
+      opacity: 0.9;
+    }
+}
 /*dark slate grey*/
-.main-body{
-  margin-left: 12%;
+.main-content{
+/*  margin-left: 12%;
   margin-right: 12%;
-  background-color: #BF75BB;
-  --box-shadow-color-1: #BF75BB;
-  --box-shadow-color-2: #688EA6;
+  background-color: #BF75BB;*/
+  --box-shadow-color-1: #44435E;
+  --box-shadow-color-2: grey;
   /*box-shadow: 0 2px 4px 0 var(--box-shadow-color), 0 3px 4px 0 var(--box-shadow-color);*/
   box-shadow: 0 4px 8px 0 var(--box-shadow-color-1), 0 6px 20px 0 var(--box-shadow-color-2) ;
 /*  box-shadow: 0 2px 4px 0, 0 3px 4px 0;*/
 }
 
 h1{
-  margin: 5%;
-  margin-left: 0px;
-  margin-bottom: 2%;
-  background-color:  #BF75BB;
+  margin: 0px;
+  margin-left: 15%;
+  background-color: #FC8A7B;
   width: 70%;
+  font-size: 32px;
+  color:black;
+  padding: 1%;
 
 
 }
+
+.btn-etiquette{
+  width: 100%;
+  padding: 1%;
+  margin: 2%;
+  color: black;
+  font-weight: bold;
+}
+
 
 #logo{
   width: 85px;
@@ -277,15 +339,15 @@ h1{
 }
 
 nav{
-  background-color: #688EA6;
+  background-color: #97A2C7;
   opacity: 0.8;
-  color: #2E2940;
+  color: #44435E;
   font-size: 20px;
   font-weight: bold;
 }
  a{
 
-  color: #2E2940;
+  color: #44435E;
 }
 
 @media (min-width: 768px) {
@@ -316,7 +378,7 @@ nav{
   font-size: 60px;
   font-family: 'Petit Formal Script', cursive;
   font-weight: bold;
-  color: white;
+  color: #D5D5D5;
 }
 
 @media (min-width: 768px) {
@@ -324,7 +386,7 @@ nav{
       font-size: 50px;
       font-family: 'Petit Formal Script', cursive;
       font-weight: bold;
-      color: white;
+      color: #D5D5D5;
     }
 }
 h2{
@@ -359,11 +421,11 @@ a{
 }
 
 .rp-announcement>p{
-  color: white;
+  color: #D5D5D5;
 }
 
 .rp-announcement-headline{
-  color: #2E2940;
+  color: #44435E;
 }
 
 #testing{
@@ -377,7 +439,7 @@ a{
   margin: 4%;
   margin-top: 1%;
   overflow: scroll;
-  --box-shadow-color-1: #688EA6;
+  --box-shadow-color-1: #97A2C7;
   --box-shadow-color-2: #BF75BB;
   /*box-shadow: 0 2px 4px 0 var(--box-shadow-color), 0 3px 4px 0 var(--box-shadow-color);*/
   box-shadow: 0 4px 8px 0 var(--box-shadow-color-1), 0 6px 20px 0 var(--box-shadow-color-2) ;
