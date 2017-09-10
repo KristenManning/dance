@@ -1,6 +1,8 @@
 
 $(document).ready(function() {
 
+
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyD8J6gNDFLxiT-W3QgLpP83TQ6NJ5cWIeo",
@@ -24,9 +26,15 @@ $(document).ready(function() {
 
     // })
 
+
+
     database.ref().on("value", function(snapshot) {
         var headings = snapshot.val()["pageHeadings"];
         $("#nav-and-news").html(headings[3][1])
+
+        document.documentElement.style.setProperty('--newsColor', headings[5][1]);
+        document.documentElement.style.setProperty('--navColor', headings[5][2]);
+        document.documentElement.style.setProperty('--pageHeadingColor', headings[5][3]);
 
     })
     database.ref().on("value", function(snapshot) {
@@ -43,25 +51,76 @@ $(document).ready(function() {
     database.ref().on("value", function(snapshot) {
     $("#instructors").html("")
     var instructors = snapshot.val()["instructors"];
-    console.log("instructors = ")
-    console.log(instructors)
+
+    // for (var i in instructors) {
+    //   if (instructors[i][0] && instructors[i][0] != "FullName"){
+    //     // new box 
+    //     var col = $("<div class='row'>")
+    //     var newInstructor = $("<div class='instructor-box'>")
+    //     // instructor image
+    //     if (instructors[i][1]){
+    //         var newInstructor_image = "<div class='col-sm-6 col-md-4'><img class='instructor-image' src='assets/images/" + instructors[i][1] + "'><div> Hello My Name Is </div></div>"
+    //     }else{
+    //         var newInstructor_image = ""
+    //     }
+
+    //     // name & role 
+    //     var newInstructor_name = "<div class='col-sm-6 col-md-3'> <h4> " + instructors[i][0] + " </h4>"
+    //     var newInstructor_role = "<h5>" + instructors[i][2] + "</h5> </div>"
+    //     var newInstructor_bio = ""
+
+    //     for (var b = 3; b < 8; b++) {
+    //         if (instructors[i][b]){
+    //             newInstructor_bio = newInstructor_bio + "<p>" + instructors[i][b] + "</p>"
+    //         }
+    //     }
+        
+    //     var newInstructor_btn = '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'+i+'">BIO</button>'
+
+    //     var newInstructor_modal = '<div id="myModal'+i+'" class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div> </div></div> </div>'
+
+
+
+    //     newInstructor.html(newInstructor_image + newInstructor_name + newInstructor_role + newInstructor_btn + newInstructor_modal)
+    //     col.append(newInstructor)
+    //     $("#instructors").append(col)
+    //     }
+    //   }
+
+    // })
 
     for (var i in instructors) {
       if (instructors[i][0] && instructors[i][0] != "FullName"){
+        // new box 
+        var newInstructor = $("<div class='col-md-4 instructor-box'>")
 
-        var newInstructor = $("<div class='col-sm-5 col-md-3 thumbnail'>")
-        var newInstructor_name = instructors[i][0]
-        var newInstructor_image = instructors[i][1]
-        console.log(newInstructor_image)
-        var newInstructor_role = instructors[i][2]
-        var newInstructor_bios = [instructors[i][3], instructors[i][4], instructors[i][5], instructors[i][6], instructors[i][7]]
-        newInstructor.html("<img src='assets/images/" + newInstructor_image + "'><h4> " + newInstructor_name + " </h4> <h5>" + newInstructor_role + "</h5>")
-        for (b in newInstructor_bios){
-          if (newInstructor_bios[b]){
-            newInstructor.append("<p>" + newInstructor_bios[b] + "</p>")
-          }
+
+
+        // instructor image
+        if (instructors[i][1]){
+            var newInstructor_image = "<div class='inst-img'><img class='instructor-image' src='assets/images/" + instructors[i][1] + "'><div class='inst-name'><span> Hello My Name Is </span></div></div>"
+        }else{
+            var newInstructor_image = ""
         }
-        console.log(newInstructor)
+
+        // name & role 
+        // var newInstructor_name = "<h4> " + instructors[i][0] + " </h4>"
+        var newInstructor_role = "<h5>" + instructors[i][2] + "</h5>"
+        var newInstructor_bio = ""
+
+        for (var b = 3; b < 8; b++) {
+            if (instructors[i][b]){
+                newInstructor_bio = newInstructor_bio + "<p>" + instructors[i][b] + "</p>"
+            }
+        }
+        
+        var newInstructor_btn = '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'+i+'">BIO</button>'
+
+        var newInstructor_modal = '<div id="myModal'+i+'" class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div> </div></div> </div>'
+
+
+
+        newInstructor.html(newInstructor_image + newInstructor_role + newInstructor_btn + newInstructor_modal)
         $("#instructors").append(newInstructor)
         }
       }
@@ -73,14 +132,14 @@ $(document).ready(function() {
     var sched = snapshot.val()["schedule"];
     for (var c in sched) {
 
-        var newClassTile = $("<div class='class-tile " + sched[c][6] +"-color'>")
+        var newClassTile = $("<div class='class-tile " + sched[c][6] +"-background'>")
         var newClassTile_style = sched[c][2]
         var newClassTile_age = sched[c][3]
         var newClassTile_song = sched[c][4]
         var newClassTile_other = sched[c][5]
         var styling = sched[c][6]
 
-        newClassTile.append("<h6>"+ newClassTile_style + "</h6>")
+        newClassTile.append("<h6><b>"+ newClassTile_style + "</b></h6>")
         newClassTile.append("<h6>"+ newClassTile_age + "</h6>")
         newClassTile.append("<p class='song tiny-text'>"+ newClassTile_song + "</p>")
         newClassTile.append("<p class='tiny-text'>"+ newClassTile_other + "</p>")
@@ -150,78 +209,11 @@ $(document).ready(function() {
     database.ref().on("value", function(snapshot) {
     // $("#classes").html("")
     var classes = snapshot.val()["classes"];
-    $("#section1 tab1").html = classes[0][0]
-
-    // for (i in classes) {
-
-    //     var newTextBlock = $("<div class='row'>")
-    //     var newTextBlock_heading = classes[b][0]
-    //     var newTextBlock_body1 = classes[b][1]
-    //     var newTextBlock_body2 = classes[b][2]
-    //     var newTextBlock_body3 = classes[b][3]
-    //     var newTextBlock_image1 = classes[b][4]
-    //     var newTextBlock_image2 = classes[b][5]
-    //     var styling = classes[b][6]
-
-
-
-    //     newTextBlock.append("<div class = 'col-md-2 classes-subheading "+ styling +"-color'>" + newTextBlock_heading + "</div>")
-    //     var text_div = $("<div class = 'col-md-5 classes-block " + styling + "-background'>")
-    //     if (newTextBlock_body1){
-    //         text_div.append(newTextBlock_body1 + "<br><br>")
-    //     }
-    //     if (newTextBlock_body2){
-    //         text_div.append(newTextBlock_body2 + "<br><br>")
-    //     }
-    //     if (newTextBlock_body3){
-    //         text_div.append(newTextBlock_body3 + "<br><br>")
-    //     }
-
-    //     newTextBlock.append(text_div)
-      
-    //     var images_div = $("<div class='col-md-4'>")
-    //     if (newTextBlock_image1){ 
-    //         images_div.append("<img class='small-image' src='" + newTextBlock_image1 + "'></div>")
-    //     }
- 
-    //     if (newTextBlock_image2){ 
-    //         images_div.append("<img class='small-image' src='" + newTextBlock_image2 + "'></div>")
-    //     }
-
-    //     newTextBlock.append(images_div)
-
-    //     console.log(newTextBlock)
-    //     if (newTextBlock_heading){
-    //         $("#classes").append(newTextBlock)
-
-    //     }
-
-    $(".classes-block:contains('ballet ')").addClass("ballet-background")
 
 
     
     });
 
-    function openClass(className) {
-    var i;
-    var x = document.getElementsByClassName("class-tab");
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none"; 
-    }
-    document.getElementById(className).style.display = "block"; 
-
-
-    }
-    $(".tab-button").click(function() {
-        var label = $(this).context.textContent
-        console.log(label)
-        openClass(label);
-    });
-
-    // $('#section1 #tab2').click(function (e) {
-    //   e.preventDefault()
-    //   $(this).tab('show')
-    // })
 
     database.ref().on("value", function(snapshot) {
     $(".rp-announcements").html("")
