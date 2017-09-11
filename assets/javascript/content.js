@@ -42,6 +42,8 @@ $(document).ready(function() {
         document.documentElement.style.setProperty('--pointeColor', headings[7][5]);
 
     })
+
+    
     database.ref().on("value", function(snapshot) {
         var headings = snapshot.val()["pageHeadings"];
         for (h in headings[2]){
@@ -221,13 +223,13 @@ $(document).ready(function() {
         
     });
 
-    database.ref().on("value", function(snapshot) {
-    // $("#classes").html("")
-    var classes = snapshot.val()["classes"];
+    // database.ref().on("value", function(snapshot) {
+    // // $("#classes").html("")
+    // var classes = snapshot.val()["classes"];
 
 
     
-    });
+    // });
 
 
     database.ref().on("value", function(snapshot) {
