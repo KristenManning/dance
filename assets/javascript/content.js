@@ -35,6 +35,11 @@ $(document).ready(function() {
         document.documentElement.style.setProperty('--newsColor', headings[5][1]);
         document.documentElement.style.setProperty('--navColor', headings[5][2]);
         document.documentElement.style.setProperty('--pageHeadingColor', headings[5][3]);
+        document.documentElement.style.setProperty('--balletColor', headings[7][1]);
+        document.documentElement.style.setProperty('--tapColor', headings[7][2]);
+        document.documentElement.style.setProperty('--jazzColor', headings[7][3]);
+        document.documentElement.style.setProperty('--comboColor', headings[7][4]);
+        document.documentElement.style.setProperty('--pointeColor', headings[7][5]);
 
     })
     database.ref().on("value", function(snapshot) {
@@ -92,35 +97,45 @@ $(document).ready(function() {
     for (var i in instructors) {
       if (instructors[i][0] && instructors[i][0] != "FullName"){
         // new box 
-        var newInstructor = $("<div class='col-md-4 instructor-box'>")
+        var newInstructor = $("<div class='col-md-4'>")
 
-
-
-        // instructor image
-        if (instructors[i][1]){
-            var newInstructor_image = "<div class='inst-img'><img class='instructor-image' src='assets/images/" + instructors[i][1] + "'><div class='inst-name'><span> Hello My Name Is </span></div></div>"
-        }else{
-            var newInstructor_image = ""
-        }
+        var instructorImage =$("<div class='instructor-box'>")
+        instructorImage.append("<img id='instr"+i+"' class='instructor-image' src='assets/images/" + instructors[i][1] + "'>")
 
         // name & role 
-        // var newInstructor_name = "<h4> " + instructors[i][0] + " </h4>"
-        var newInstructor_role = "<h5>" + instructors[i][2] + "</h5>"
-        var newInstructor_bio = ""
+        var newInstructor_name = "<a data-target='#modal-"+i+"' data-toggle='modal' href='#modal-"+i+"'><h5> " + instructors[i][0] + " </h5></a>"
+        var newInstructor_role = "<p>" + instructors[i][2] + "</p>"
+        var instructorInfo = $("<div class='instructor-info'>")
+        instructorInfo.append(newInstructor_name)
+        instructorInfo.append(newInstructor_role)
+        instructorImage.append(instructorInfo)
 
+        
+        // $("#instr"+i).on({'click': function(){
+        //     alert("hi")
+        //     $("#instr"+i).attr('src','assets/images/logo.jpg');
+        //     }
+        // });
+
+        $("#instructors-heading").on('click', function () {
+            $("#instructors-heading").attr('background-color','blue');
+
+        });
+   
+
+        // create bio modal 
+        var newInstructor_bio = ""
         for (var b = 3; b < 8; b++) {
             if (instructors[i][b]){
                 newInstructor_bio = newInstructor_bio + "<p>" + instructors[i][b] + "</p>"
             }
         }
-        
-        var newInstructor_btn = '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'+i+'">BIO</button>'
-
-        var newInstructor_modal = '<div id="myModal'+i+'" class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div> </div></div> </div>'
+        var newInstructor_modal = '<div id="modal-'+i+'"class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'</div></div></div> </div>'
 
 
 
-        newInstructor.html(newInstructor_image + newInstructor_role + newInstructor_btn + newInstructor_modal)
+        newInstructor.html(instructorImage)
+        $("#modals").append(newInstructor_modal)
         $("#instructors").append(newInstructor)
         }
       }
@@ -173,25 +188,24 @@ $(document).ready(function() {
               for (var i = 1; i < 7; i++) {
                 $(".tabbed-content-" + i).html(about_us[etiquetteType][i])
               }
+              if (about_us[etiquetteType][7]){
+                $(".tabbed-content-" + i).html("<img class='small-image' src="+about_us[etiquetteType][7]+">")
+              }
         });
 
         for (var i = 1; i < 7; i++) {
             $(".tabbed-content-" + i).html(about_us[3][i])
+            if (about_us[3][7]){
+                $(".tabbed-content-" + i).html("<img scr="+about_us[3][7]+">")
+              }
         }
-
-
-    // section 1 (About the Studio) heading tile
-    $("#about-subheading-1").html("<p class='about-subheading'>" + about_us[0][0] + "</p>")
-    // section 2 (Our Mission) heading tile
-    $("#about-subheading-2").html("<p class='about-subheading'>" + about_us[1][0] + "</p>")
 
     // section 1 content 
-    $("#about-section-1").html("")
-        for (var i = 1; i < 5; i++) {
-            var new_content = about_us[0][i]
-            if (new_content){
-                $("#about-section-1").append(new_content)
-        }
+    $("#about-overview").html("<h5>"+about_us[0][1]+"</h5>")
+    for (var i = 2; i < 5; i++) {
+        if (about_us[0][i]){
+            $("#about-image-"+i).html("<img class='overview-image' src="+about_us[0][i]+">")
+    }
     }
 
     // section 2 content 
@@ -199,8 +213,9 @@ $(document).ready(function() {
         for (var i = 1; i < 5; i++) {
             var new_content = about_us[1][i]
             if (new_content){
-                $("#about-section-2").append(new_content)
+                $("#about-section-2").append("<h5>" + new_content + "</h5>")
         }
+
     }
     
         
@@ -273,15 +288,13 @@ $(document).ready(function() {
     $("#photos").html("")
     var photos = snapshot.val()["photos"];
     for (var p in photos) {
-        var newPhoto = $("<div class='col-sm-5 col-md-3 thumbnail gallery-thumbnail'>")
+        var newPhoto = $("<div class='col-sm-6 col-md-4 gallery-image-box'>")
         var newPhoto_link = photos[p][0]
-        var newPhoto_caption = photos[p][1]
     
         newPhoto.append("<img class='gallery-image' src='" + newPhoto_link + "'>")
         
         if (newPhoto_link){
             $("#photos").prepend(newPhoto)
-
         }
 
     }
