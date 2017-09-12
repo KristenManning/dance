@@ -10,8 +10,8 @@
   --comboColor: #83EBF3;
   --pointeColor: #A7628B;
 
-  --standardTextColor: #888888;
-  --enlargedParagraphColor: white;
+  --standardTextColor: #44435E;
+  --enlargedParagraphColor: #44435E;
   --mottoColor: #A7628B;
   --policiesBackground: #888888;
 }
@@ -29,7 +29,8 @@ body, html {
 body { 
     font-family: 'Roboto', sans-serif;
     /* The image used */
-    background-image: url("../images/sequins-2.jpg");
+
+    background-image: url("https://thumb9.shutterstock.com/display_pic_with_logo/966926/203468485/stock-photo-shiny-sequin-texture-background-203468485.jpg");
 
     background-position: top;
 
@@ -37,7 +38,7 @@ body {
 /*    background-position: center;*/
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #67778C;
+    background-color: grey;
     background-blend-mode: multiply;
     background-attachment: fixed;
 }
@@ -327,7 +328,7 @@ body, html{
   margin-left: 15%;
   margin-right: 15%;
   background-color: #D5D5D5;
-  opacity: 0.9;
+  opacity: 1;
   padding-bottom: 1%;
 }
 
