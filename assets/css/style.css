@@ -9,12 +9,23 @@
   --jazzColor: #FC8A7B;
   --comboColor: #83EBF3;
   --pointeColor: #A7628B;
+
+  --standardTextColor: #888888;
+  --enlargedParagraphColor: white;
+  --mottoColor: #A7628B;
+  --policiesBackground: #888888;
 }
 
 body, html {
     height: 100%;
 }
 
+.policies{
+  padding: 2%;
+  background-color: var(--policiesBackground) ;
+  color: var(--newsColor) ;
+  border: solid;
+}
 body { 
     font-family: 'Roboto', sans-serif;
     /* The image used */
@@ -31,7 +42,9 @@ body {
     background-attachment: fixed;
 }
 
-
+#video-40{
+    text-align: center;
+}
 
 #about-heading{
   margin: none;
@@ -99,7 +112,16 @@ body {
 
 }
 
-#about-subheading-1, #about-subheading-2, #about-subheading-etiquette, #classes-subheading-ballet, #classes-subheading-tap ,#classes-subheading-jazz ,#classes-subheading-pointe ,#classes-subheading-combinations{
+#about-subheading-etiquette{
+  font-size: 26px;
+  color: #696791;
+  font-weight: bold;
+  text-align: center;
+  font-style:bold;
+
+}
+
+#classes-subheading-ballet, #classes-subheading-tap ,#classes-subheading-jazz ,#classes-subheading-pointe ,#classes-subheading-combinations{
   padding: 2%;
   font-size: 24px;
   color: #696791;
@@ -306,6 +328,7 @@ body, html{
   margin-right: 15%;
   background-color: #D5D5D5;
   opacity: 0.9;
+  padding-bottom: 1%;
 }
 
 
@@ -380,8 +403,10 @@ h1{
 }
 
 .btn-etiquette{
-  width: 70%;
+  width: 90%;
   padding: 1%;
+  padding-top: 3%;
+  padding-bottom: 3%;
   margin: 2%;
   color: var(--whiteColor);
   font-weight: bold;
@@ -459,13 +484,14 @@ h4{
 }
 
 h5{
-  color: white;
+  color: var(--enlargedParagraphColor);
   line-height: 24px;
 
 }
 
 p{
-
+  font-size: 16px;
+  color: var(--standardTextColor);
 }
 
 a{
@@ -511,7 +537,7 @@ a{
   text-align: center;
   font-style: italic;
   font-weight: bold;
-  color: var(--pointeColor);
+  color: var(--mottoColor);
 }
 
 .instructor-box{
@@ -548,10 +574,20 @@ a{
     margin-top:20px;
 }
 
+.buttons-div{
+  padding-top: 5%;
+  text-align: center;
+}
+
 .thumbnail {
     padding: 0;
 }
 
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
     width: 100%;
+}
+
+.class-btn{
+  border: none;
+  background: none;
 }

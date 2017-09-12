@@ -40,10 +40,12 @@ $(document).ready(function() {
         document.documentElement.style.setProperty('--jazzColor', headings[7][3]);
         document.documentElement.style.setProperty('--comboColor', headings[7][4]);
         document.documentElement.style.setProperty('--pointeColor', headings[7][5]);
-
+        document.documentElement.style.setProperty('--standardTextColor', headings[9][1]);
+        document.documentElement.style.setProperty('--enlargedParagraphColor', headings[9][2]);
+        document.documentElement.style.setProperty('--mottoColor', headings[9][3]);
     })
 
-    
+
     database.ref().on("value", function(snapshot) {
         var headings = snapshot.val()["pageHeadings"];
         for (h in headings[2]){
@@ -192,6 +194,8 @@ $(document).ready(function() {
               }
               if (about_us[etiquetteType][7]){
                 $(".tabbed-content-" + i).html("<img class='small-image' src="+about_us[etiquetteType][7]+">")
+              }else{
+                $(".tabbed-content-" + i).html("")
               }
         });
 
@@ -223,13 +227,18 @@ $(document).ready(function() {
         
     });
 
-    // database.ref().on("value", function(snapshot) {
-    // // $("#classes").html("")
-    // var classes = snapshot.val()["classes"];
+    database.ref().on("value", function(snapshot) {
+        var classes = snapshot.val()["classes"];
 
+        $('.dance-class-buttons').on("click", ".class-btn", function() {
+                console.log($(this))
+                $("#dance-class-content").html(classes[parseInt($(this).context.id)][1])
+              
+        });
 
+        $("#dance-class-content").html(classes[1][1])
     
-    // });
+    });
 
 
     database.ref().on("value", function(snapshot) {
