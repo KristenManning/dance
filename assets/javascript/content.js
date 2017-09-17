@@ -43,6 +43,8 @@ $(document).ready(function() {
         document.documentElement.style.setProperty('--standardTextColor', headings[9][1]);
         document.documentElement.style.setProperty('--enlargedParagraphColor', headings[9][2]);
         document.documentElement.style.setProperty('--mottoColor', headings[9][3]);
+        document.documentElement.style.setProperty('--classButtonColor', headings[9][4]);
+        
     })
 
 
@@ -60,43 +62,6 @@ $(document).ready(function() {
     database.ref().on("value", function(snapshot) {
     $("#instructors").html("")
     var instructors = snapshot.val()["instructors"];
-
-    // for (var i in instructors) {
-    //   if (instructors[i][0] && instructors[i][0] != "FullName"){
-    //     // new box 
-    //     var col = $("<div class='row'>")
-    //     var newInstructor = $("<div class='instructor-box'>")
-    //     // instructor image
-    //     if (instructors[i][1]){
-    //         var newInstructor_image = "<div class='col-sm-6 col-md-4'><img class='instructor-image' src='assets/images/" + instructors[i][1] + "'><div> Hello My Name Is </div></div>"
-    //     }else{
-    //         var newInstructor_image = ""
-    //     }
-
-    //     // name & role 
-    //     var newInstructor_name = "<div class='col-sm-6 col-md-3'> <h4> " + instructors[i][0] + " </h4>"
-    //     var newInstructor_role = "<h5>" + instructors[i][2] + "</h5> </div>"
-    //     var newInstructor_bio = ""
-
-    //     for (var b = 3; b < 8; b++) {
-    //         if (instructors[i][b]){
-    //             newInstructor_bio = newInstructor_bio + "<p>" + instructors[i][b] + "</p>"
-    //         }
-    //     }
-        
-    //     var newInstructor_btn = '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'+i+'">BIO</button>'
-
-    //     var newInstructor_modal = '<div id="myModal'+i+'" class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div> </div></div> </div>'
-
-
-
-    //     newInstructor.html(newInstructor_image + newInstructor_name + newInstructor_role + newInstructor_btn + newInstructor_modal)
-    //     col.append(newInstructor)
-    //     $("#instructors").append(col)
-    //     }
-    //   }
-
-    // })
 
     for (var i in instructors) {
       if (instructors[i][0] && instructors[i][0] != "FullName"){
@@ -235,13 +200,24 @@ $(document).ready(function() {
     database.ref().on("value", function(snapshot) {
         var classes = snapshot.val()["classes"];
 
+        for (var i = 1; i < 6; i++) {
+            $("#"+i).text(classes[i][0])
+        }
         $('.dance-class-buttons').on("click", ".class-btn", function() {
-                console.log($(this))
-                $("#dance-class-content").html(classes[parseInt($(this).context.id)][1])
+            $(".class-btn").css("color", "var(--classButtonColor")
+            $(this).css("color", "var(--mottoColor")
+            $("#dance-class-content").html(classes[parseInt($(this).context.id)][1])
               
         });
 
         $("#dance-class-content").html(classes[1][1])
+
+        $("#classes-overview").html("<ul>")
+        for (var i = 7; i < 17; i++){
+            if (classes[i][1]){
+                $("#classes-overview").append("<li> "+ classes[i][1] + "</li><br>")
+            }
+        }
     
     });
 

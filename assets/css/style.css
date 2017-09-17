@@ -14,6 +14,7 @@
   --enlargedParagraphColor: #44435E;
   --mottoColor: #A7628B;
   --policiesBackground: #888888;
+  --classButtonColor: #5D6D7E;
 
 }
 
@@ -21,11 +22,21 @@ body, html {
     height: 100%;
 }
 
+#reg-iframe{
+  border: solid;
+}
+
 .policies{
-  padding: 2%;
+  padding: 3%;
   background-color: var(--policiesBackground) ;
   color: var(--newsColor) ;
+  text-align: center;
   border: solid;
+  border-width: 2px
+}
+
+.policies h5{
+  color: white;
 }
 body { 
     font-family: 'Roboto', sans-serif;
@@ -47,6 +58,16 @@ body {
 #video-40{
     text-align: center;
 }
+
+.modal-content{
+  background-color: var(--newsColor);
+  color: white;
+}
+
+.modal-content p{
+  color: white;
+}
+
 
 #about-heading{
   margin: none;
@@ -121,7 +142,7 @@ body {
 
 #about-subheading-etiquette{
   font-size: 26px;
-  color: #696791;
+  color: var(--classButtonColor);
   font-weight: bold;
   text-align: center;
   font-style:bold;
@@ -132,7 +153,7 @@ body {
   padding: 2%;
   padding-top: 10%;
   font-size: 24px;
-  color: #696791;
+  color: var(--classButtonColor);
   font-weight: bold;
   text-align: center;
   font-style:bold;
@@ -320,7 +341,7 @@ body {
 }
 
 .dance-class-buttons{
-  padding: 5%;
+  padding: 2%;
 }
 .tiny-text{
   font-size: 8px;
@@ -381,12 +402,23 @@ body, html{
   font-size: 18px;
 }
 
+#classes-overview li{
+  color: var(--pageHeadingColor);
+  font-size: 20px;
+}
+
 
 table{
   width: 90%;
-  background-color: #D5D5D5;
   overflow: scroll;
-  color: black;
+  background-color: var(--pageHeadingColor);
+}
+
+.table-outer{
+  background-color: var(--pageHeadingColor);
+  border-style: solid;
+  border-color: var(--policiesBackground);
+  border-width: 2px;
 }
 /*@media (max-width: 768px) {
     .main-content{
@@ -417,6 +449,10 @@ table{
   color: black;
 }
 
+#contact{
+  font-size: 14px;
+  color: white;
+}
 table > p{
   color: black;
 }
@@ -424,6 +460,7 @@ table > p{
 #aside{
   text-align: right;
   padding: 1%;
+  color: white;
 }
 
 #reg-table-title{
@@ -564,10 +601,11 @@ a{
   padding-bottom: 70px; 
 }
 
+
+.instructor-info h5, .instructor-info p{
+  color: white;
 }
-.instructor-box p, .instructor-box h5, .news-ticker p{
-  color:white;
-}
+
 .rp-announcement{
   background-color: #49E83E;
   padding: 10px;
@@ -617,7 +655,6 @@ a{
   margin-bottom: 2%;
   margin-bottom: 2%;
   background-color: var(--newsColor);
-  color:#D5D5D5;
   position: relative;
 /*  border: solid;*/
 }
@@ -630,7 +667,6 @@ a{
   padding-left: 2%;
   width: 80%;
   opacity: 0.8;
-  color: white;
 }
 
 .instructor-image{
