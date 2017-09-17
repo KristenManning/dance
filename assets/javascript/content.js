@@ -162,17 +162,21 @@ $(document).ready(function() {
         $('.buttons-div').on("click", ".btn-etiquette", function() {
           $(".btn-etiquette").css("background-color", "var(--pageHeadingColor)" )
           $(this).css("background-color", "var(--mottoColor)" )
+
           var etiquetteType = $(this).data().etiquettetype;
+          console.log($(this).val())
+          $("#about-subheading-etiquette").html($(this).text() + " Etiquette")
           for (var i = 1; i < 7; i++) {
             $(".tabbed-content-" + i).html(about_us[etiquetteType][i])
           }
           if (about_us[etiquetteType][7]){
-            $(".tabbed-content-" + i).html("<img class='small-image' src="+about_us[etiquetteType][7]+">")
+            $(".tabbed-content-7").html("<img class='small-image' src="+about_us[etiquetteType][7]+">")
           }else{
             $(".tabbed-content-" + i).html("")
           }
         });
 
+        $("#about-subheading-etiquette").html(about_us[3][0] + " Etiquette")
         for (var i = 1; i < 7; i++) {
             $(".tabbed-content-" + i).html(about_us[3][i])
             if (about_us[3][7]){
@@ -204,6 +208,7 @@ $(document).ready(function() {
             $("#"+i).text(classes[i][0])
         }
         $('.dance-class-buttons').on("click", ".class-btn", function() {
+            $("#class-type").text($(this).text())
             $(".class-btn").css("color", "var(--classButtonColor")
             $(this).css("color", "var(--mottoColor")
             $("#dance-class-content").html(classes[parseInt($(this).context.id)][1])
@@ -213,6 +218,8 @@ $(document).ready(function() {
         $("#dance-class-content").html(classes[1][1])
 
         $("#classes-overview").html("<ul>")
+
+        $("#class-type").text(classes[1][0])
         for (var i = 7; i < 17; i++){
             if (classes[i][1]){
                 $("#classes-overview").append("<li> "+ classes[i][1] + "</li><br>")
