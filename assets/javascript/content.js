@@ -104,7 +104,7 @@ $(document).ready(function() {
         var newInstructor = $("<div class='col-md-4'>")
 
         var instructorImage =$("<div class='instructor-box'>")
-        instructorImage.append("<img id='instr"+i+"' class='instructor-image' src='assets/images/" + instructors[i][1] + "'>")
+        instructorImage.append("<img id='instr"+i+"' class='instructor-image' data-switch='assets/images/logo.jpg' data-hold='assets/images/" + instructors[i][1] + "' src='assets/images/" + instructors[i][1] + "'>")
 
         // name & role 
         var newInstructor_name = "<a data-target='#modal-"+i+"' data-toggle='modal' href='#modal-"+i+"'><h5> " + instructors[i][0] + " </h5></a>"
@@ -120,11 +120,6 @@ $(document).ready(function() {
         //     $("#instr"+i).attr('src','assets/images/logo.jpg');
         //     }
         // });
-
-        $("#instructors-heading").on('click', function () {
-            $("#instructors-heading").attr('background-color','blue');
-
-        });
    
 
         // create bio modal 
@@ -145,6 +140,19 @@ $(document).ready(function() {
       }
 
     })
+
+    $(document).on("mouseenter", ".instructor-image", function(e) {
+        $(this).attr("src", $(this).data("switch"))
+        $(this).data("switch", $(this).data("hold"))
+        $(this).data("hold", $(this).attr("src"))
+    });
+
+    $(document).on("mouseleave", ".instructor-image", function(e) {
+        $(this).attr("src", $(this).data("switch"))
+        $(this).data("switch", $(this).data("hold"))
+        $(this).data("hold", $(this).attr("src"))
+    });
+
 
     database.ref().on("value", function(snapshot) {
     $("#schedule").html("")
@@ -187,16 +195,17 @@ $(document).ready(function() {
         display_buttons()
 
         $('.buttons-div').on("click", ".btn-etiquette", function() {
-
-              var etiquetteType = $(this).data().etiquettetype;
-              for (var i = 1; i < 7; i++) {
-                $(".tabbed-content-" + i).html(about_us[etiquetteType][i])
-              }
-              if (about_us[etiquetteType][7]){
-                $(".tabbed-content-" + i).html("<img class='small-image' src="+about_us[etiquetteType][7]+">")
-              }else{
-                $(".tabbed-content-" + i).html("")
-              }
+          $(".btn-etiquette").css("background-color", "var(--pageHeadingColor)" )
+          $(this).css("background-color", "var(--mottoColor)" )
+          var etiquetteType = $(this).data().etiquettetype;
+          for (var i = 1; i < 7; i++) {
+            $(".tabbed-content-" + i).html(about_us[etiquetteType][i])
+          }
+          if (about_us[etiquetteType][7]){
+            $(".tabbed-content-" + i).html("<img class='small-image' src="+about_us[etiquetteType][7]+">")
+          }else{
+            $(".tabbed-content-" + i).html("")
+          }
         });
 
         for (var i = 1; i < 7; i++) {
@@ -208,11 +217,7 @@ $(document).ready(function() {
 
     // section 1 content 
     $("#about-overview").html("<h5>"+about_us[0][1]+"</h5>")
-    for (var i = 2; i < 5; i++) {
-        if (about_us[0][i]){
-            $("#about-image-"+i).html("<img class='overview-image' src="+about_us[0][i]+">")
-    }
-    }
+
 
     // section 2 content 
     $("#about-section-2").html("")
@@ -299,7 +304,7 @@ $(document).ready(function() {
     $("#photos").html("")
     var photos = snapshot.val()["photos"];
     for (var p in photos) {
-        var newPhoto = $("<div class='col-sm-6 col-md-4 gallery-image-box'>")
+        var newPhoto = $("<div class='col-sm-3 col-md-2 gallery-image-box'>")
         var newPhoto_link = photos[p][0]
     
         newPhoto.append("<img class='gallery-image' src='" + newPhoto_link + "'>")
@@ -309,6 +314,11 @@ $(document).ready(function() {
         }
 
     }
+    });
+
+    $(document).on("mouseenter", ".gallery-image", function(e) {
+        $("#feat-photo").attr("src", $(this).attr("src"))
+
     });
 
     database.ref().on("value", function(snapshot) {
