@@ -163,7 +163,7 @@ $(document).ready(function() {
 
         $('.buttons-div').on("click", ".btn-etiquette", function() {
           $(".btn-etiquette").css("background-color", "var(--pageHeadingColor)" )
-          $(this).css("background-color", "var(--mottoColor)" )
+          $(this).css("background-color", "var(--classButtonColor)" )
 
           var etiquetteType = $(this).data().etiquettetype;
           console.log($(this).val())
