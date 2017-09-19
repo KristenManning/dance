@@ -44,6 +44,8 @@ $(document).ready(function() {
         document.documentElement.style.setProperty('--enlargedParagraphColor', headings[9][2]);
         document.documentElement.style.setProperty('--mottoColor', headings[9][3]);
         document.documentElement.style.setProperty('--classButtonColor', headings[9][4]);
+        document.documentElement.style.setProperty('--policiesText', headings[9][5]);
+        document.documentElement.style.setProperty('--policiesHeading', headings[9][6]);
         
     })
 

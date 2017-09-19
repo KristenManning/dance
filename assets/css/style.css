@@ -15,6 +15,8 @@
   --mottoColor: #A7628B;
   --policiesBackground: #888888;
   --classButtonColor: #5D6D7E;
+  --policiesText: white;
+  --policiesHeading: blue
 
 }
 
@@ -35,9 +37,11 @@ body, html {
   border-width: 2px
 }
 
-.policies h5{
-  color: white;
+.policies p{
+  color: var(--policiesText);
+  font-size: 18px;
 }
+
 body { 
     font-family: 'Roboto', sans-serif;
     /* The image used */
@@ -266,6 +270,14 @@ body {
 .gallery-thumbnail{
   max-height: 200px;
 
+}
+
+td{
+  font-size: 24px;
+}
+
+th{
+  font-size: 36px;
 }
 
 .chalk-text{
@@ -560,8 +572,8 @@ h2{
 
 }
 
-h3{
-  color: var(--pageHeadingColor);
+.policies h4{
+  color: var(--policiesHeading);
 }
 
 h4{
