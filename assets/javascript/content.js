@@ -289,7 +289,7 @@ $(document).ready(function() {
     $("#photos").html("")
     var photos = snapshot.val()["photos"];
     for (var p in photos) {
-        var newPhoto = $("<div class='col-sm-3 col-md-2 gallery-image-box'>")
+        var newPhoto = $("<div class='col-sm-2 col-md-1 gallery-image-box'>")
         var newPhoto_link = photos[p][0]
     
         newPhoto.append("<img class='gallery-image' src='" + newPhoto_link + "'>")
