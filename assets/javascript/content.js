@@ -124,26 +124,128 @@ $(document).ready(function() {
     database.ref().on("value", function(snapshot) {
     $("#schedule").html("")
     var sched = snapshot.val()["schedule"];
-    for (var c in sched) {
 
-        var newClassTile = $("<div class='class-tile " + sched[c][6] +"-background'>")
-        var newClassTile_style = sched[c][2]
-        var newClassTile_age = sched[c][3]
-        var newClassTile_song = sched[c][4]
-        var newClassTile_other = sched[c][5]
+    var reset_tiles = function(){
+        $(".class-tile").html("")
+        $(".class-tile").removeClass( "default-background" )
+        $("#displayed-style").text("")
+    }
+
+    var display_all_classes = function(sched){
+        reset_tiles()
+
+        for (var c in sched) {
+
+        
+        var day = sched[c][0]
+        var time =sched[c][1]
+
+        var tile_style = sched[c][2]
+        var tile_age = sched[c][3]
+        var tile_song = sched[c][4]
+        var tile_other = sched[c][5]
         var styling = sched[c][6]
 
-        newClassTile.append("<h6><b>"+ newClassTile_style + "</b></h6>")
-        newClassTile.append("<h6>"+ newClassTile_age + "</h6>")
-        newClassTile.append("<p class='song tiny-text'>"+ newClassTile_song + "</p>")
-        newClassTile.append("<p class='tiny-text'>"+ newClassTile_other + "</p>")
+        var tile = $(time + " > " + day + " > .class-tile")
+        tile.append("<h6><b>"+ tile_style + "</b></h6>")
+        tile.append("<h6>"+ tile_age + "</h6>")
+        tile.append("<p class='song tiny-text'>"+ tile_song + "</p>")
+        tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
+        tile.addClass( styling + "-background" )
 
-        console.log(newClassTile)
-        if (newClassTile_style){
-            $(sched[c][1] + ">" + sched[c][0]).append(newClassTile)
         }
 
     }
+    
+
+    var filter_by = function(dance_style) {
+        reset_tiles()
+        for (var c in sched) {
+            var day = sched[c][0]
+            var time =sched[c][1]
+            if (sched[c][6] == dance_style){
+                var tile_style = sched[c][2]
+                var tile_age = sched[c][3]
+                var tile_other = sched[c][5]
+                var styling = sched[c][6]
+                var tile = $(time + " > " + day + " > .class-tile")
+                tile.html("")
+                tile.append("<h4>"+ tile_age + "</h4>")
+                tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
+                tile.addClass( styling + "-background" )
+            }
+            else{
+                var tile = $(time + " > " + day + " > .class-tile")
+                tile.addClass( "default-background" )
+            }
+            
+        }
+        $("#displayed-style").text(tile_style + " Offerings by Age/Grade")
+
+
+    }
+
+    var filter_by_combo = function(style1, style2) {
+        reset_tiles()
+        for (var c in sched) {
+            var day = sched[c][0]
+            var time =sched[c][1]
+            var check_style = sched[c][2]
+            if (sched[c][6] == "combo" && check_style.includes(style1) && check_style.includes(style2)){
+
+                var tile_style = sched[c][2]
+                var tile_age = sched[c][3]
+                var tile_other = sched[c][5]
+                var styling = sched[c][6]
+                var tile = $(time + " > " + day + " > .class-tile")
+                tile.html("")
+                tile.append("<h4>"+ tile_age + "</h4>")
+                tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
+                tile.addClass( styling + "-background" )
+            
+
+            }else{
+                var tile = $(time + " > " + day + " > .class-tile")
+                tile.addClass( "default-background" )
+            }
+            
+        }
+        $("#displayed-style").text(tile_style + " Offerings by Age/Grade")
+
+
+    }
+    
+    $('#ballet-filter').on("click", function() {
+          filter_by("ballet")
+    });
+
+    $('#tap-filter').on("click", function() {
+          filter_by("tap")
+    });
+
+    $('#jazz-filter').on("click", function() {
+          filter_by("jazz")
+    });
+
+    $('#ballet-jazz-combo-filter').on("click", function() {
+          filter_by_combo("Ballet", "Jazz")
+    });
+
+    $('#pointe-filter').on("click", function() {
+          filter_by("pointe")
+    });
+
+    $('#tap-jazz-combo-filter').on("click", function() {
+          filter_by_combo("Tap", "Jazz")
+    });
+
+    $('#all-filter').on("click", function() {
+          display_all_classes(sched)
+    });
+
+
+    display_all_classes(sched)
+    
     });
 
     database.ref().on("value", function(snapshot) {
@@ -206,27 +308,47 @@ $(document).ready(function() {
     database.ref().on("value", function(snapshot) {
         var classes = snapshot.val()["classes"];
 
-        for (var i = 1; i < 6; i++) {
+        var display_class_choices = function(){
+            $(".dance-classes").html('      <div class="col-md-6"><div id="classes-subheading-ballet"><button id="1" class="class-btn"></button> </div></div><div class="col-md-6"><div id="classes-subheading-tap"><button id="2"  class="class-btn"></button></div></div><div class="col-md-6"><div id="classes-subheading-jazz"><button id="3" class="class-btn"></button></div></div><div class="col-md-6"><div id="classes-subheading-pointe"><button id="4" class="class-btn"></button></div></div>')
+
+            for (var i = 1; i < 5; i++) {
             $("#"+i).text(classes[i][0])
+            }
+
+
         }
-        $('.dance-class-buttons').on("click", ".class-btn", function() {
-            $("#class-type").text($(this).text())
-            $(".class-btn").css("color", "var(--classButtonColor")
-            $(this).css("color", "var(--mottoColor")
-            $("#dance-class-content").html(classes[parseInt($(this).context.id)][1])
-              
+
+        display_class_choices()
+
+        $('.dance-classes').on("click", ".class-btn", function() {
+            $("#class-type").html($(this).text())
+            $(".dance-classes").html("<div class='col-md-12'>" + classes[parseInt($(this).context.id)][1] + "</div>")
         });
 
-        $("#dance-class-content").html(classes[1][1])
+        $('#exit-icon').on("click", function() {
+            display_class_choices()
+        });
+        // for (var i = 1; i < 6; i++) {
+        //     $("#"+i).text(classes[i][0])
+        // }
+        // $('.dance-class-buttons').on("click", ".class-btn", function() {
+        //     $("#class-type").text($(this).text())
+        //     $(".class-btn").css("color", "var(--classButtonColor")
+        //     $(this).css("color", "var(--mottoColor")
+        //     $("#dance-class-content").html(classes[parseInt($(this).context.id)][1])
+              
+        // });
 
-        $("#classes-overview").html("<ul>")
+        // $("#dance-class-content").html(classes[1][1])
 
-        $("#class-type").text(classes[1][0])
-        for (var i = 7; i < 17; i++){
-            if (classes[i][1]){
-                $("#classes-overview").append("<li> "+ classes[i][1] + "</li><br>")
-            }
-        }
+        // $("#classes-overview").html("<ul>")
+
+        // $("#class-type").text(classes[1][0])
+        // for (var i = 7; i < 17; i++){
+        //     if (classes[i][1]){
+        //         $("#classes-overview").append("<li> "+ classes[i][1] + "</li><br>")
+        //     }
+        // }
     
     });
 

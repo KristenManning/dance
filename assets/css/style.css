@@ -23,7 +23,14 @@
 body, html {
     height: 100%;
 }
-
+#exit-icon{
+  font-size: 20px;
+  vertical-align: middle;
+  text-align: center;
+}
+#exit-icon-row{
+  text-align: right;
+}
 #reg-iframe{
   border: solid;
 }
@@ -179,6 +186,11 @@ body {
 
 }
 
+#displayed-style{
+  font-style: italic;
+  color: black;
+}
+
 .tap-color{
   color: var(--tapColor);
 }
@@ -213,6 +225,10 @@ body {
 
 .combo-background{
   background-color: var(--comboColor);
+}
+
+.default-background{
+  background-color: var(--pageHeadingColor);
 }
 
 
@@ -440,7 +456,6 @@ body, html{
 
 table{
   width: 90%;
-  overflow: scroll;
   background-color: var(--pageHeadingColor);
 }
 
@@ -514,6 +529,7 @@ h1{
   font-size: 36px;
   color: #D5D5D5;
   padding: 1%;
+  box-shadow: 5px 5px 1px grey;
 
 
 }
@@ -725,9 +741,6 @@ a{
     width: 100%;
 }
 
-#class-type{
-  text-align: center;
-}
 .class-btn{
   border: none;
   background: none;

@@ -34,17 +34,21 @@
 <!-- <div class="container-fluid"> -->
   
 <div id="nav-and-news"></div>
-  <div class="container-fluid" id="outermost_container">
+
     
-          <div class="row main-content">
-            <h1 id="schedule-heading">Schedule</h1>
+          <div class="container main-content">
+            <div class="row">
+            <h1>Schedule</h1>
+            </div>
 
             <div id="schedule">
+
             </div>
 
 
 
-          <div class="col-md-12 container">               
+          <div class="col-md-12 container"> 
+            <h3 id="displayed-style"></h3>       
             <table class="table table-hover">
               <thead>
                 <tr id="DOWheadings">
@@ -60,52 +64,57 @@
 
                 <tr class="class-time" id="4pm">
                   <td>4:00</td>
-                  <td class="mon"></td>
-                  <td class="tues"></td>
-                  <td class="wed"></td>
-                  <td class="thurs"></td>
-                  <td class="fri"></td>
+                  <td class="mon"><div class='class-tile default-background'></td>
+                  <td class="tues"><div class='class-tile default-background'></td>
+                  <td class="wed"><div class='class-tile default-background'></td>
+                  <td class="thurs"><div class='class-tile default-background'></td>
+                  <td class="fri"><div class='class-tile default-background'></td>
                 </tr>
 
                 <tr class="class-time" id="5pm">
                   <td>5:00</td>
-                  <td class="mon"></td>
-                  <td class="tues"></td>
-                  <td class="wed"></td>
-                  <td class="thurs"></td>
-                  <td class="fri"></td>
+                  <td class="mon"><div class='class-tile default-background'></td>
+                  <td class="tues"><div class='class-tile default-background'></td>
+                  <td class="wed"><div class='class-tile default-background'></td>
+                  <td class="thurs"><div class='class-tile default-background'></td>
+                  <td class="fri"><div class='class-tile default-background'></td>
                 </tr>
 
                 <tr class="class-time" id="6pm">
                   <td>6:00</td>
-                  <td class="mon"></td>
-                  <td class="tues"></td>
-                  <td class="wed"></td>
-                  <td class="thurs"></td>
-                  <td class="fri"></td>
+                  <td class="mon"><div class='class-tile default-background'></td>
+                  <td class="tues"><div class='class-tile default-background'></td>
+                  <td class="wed"><div class='class-tile default-background'></td>
+                  <td class="thurs"><div class='class-tile default-background'></td>
+                  <td class="fri"><div class='class-tile default-background'></td>
                 </tr>
 
                 <tr class="class-time" id="7pm">
                   <td>7:00</td>
-                  <td class="mon"></td>
-                  <td class="tues"></td>
-                  <td class="wed"></td>
-                  <td class="thurs"></td>
-                  <td class="fri"></td>
+                  <td class="mon"><div class='class-tile default-background'></td>
+                  <td class="tues"><div class='class-tile default-background'></td>
+                  <td class="wed"><div class='class-tile default-background'></td>
+                  <td class="thurs"><div class='class-tile default-background'></td>
+                  <td class="fri"><div class='class-tile default-background'></td>
                 </tr>
 
                 <tr class="class-time" id="8pm">
                   <td>8:00</td>
-                  <td class="mon"></td>
-                  <td class="tues"></td>
-                  <td class="wed"></td>
-                  <td class="thurs"></td>
-                  <td class="fri"></td>
+                  <td class="mon"><div class='class-tile default-background'></td>
+                  <td class="tues"><div class='class-tile default-background'></td>
+                  <td class="wed"><div class='class-tile default-background'></td>
+                  <td class="thurs"><div class='class-tile default-background'></td>
+                  <td class="fri"><div class='class-tile default-background'></td>
 
                 </tr>
                
               </tbody>
             </table>
+          </div>
+          <div class="row">
+            <div class="col-md-12" id="filter-buttons">
+            Filter by: <button id="ballet-filter">Ballet</button> <button id="tap-filter">Tap</button> <button id="jazz-filter">Jazz</button> <button id="pointe-filter">Pointe</button> <button id="ballet-jazz-combo-filter">Ballet/Jazz Combo</button> <button id="tap-jazz-combo-filter">Tap/Jazz Combo</button><button id="all-filter">All</button>
+            </div>
           </div>
 
         </div>
