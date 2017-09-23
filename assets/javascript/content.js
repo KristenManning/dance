@@ -33,7 +33,7 @@ $(document).ready(function() {
       document.documentElement.style.setProperty('--standardTextColor', headings[9][1]);
       document.documentElement.style.setProperty('--enlargedParagraphColor', headings[9][2]);
       document.documentElement.style.setProperty('--mottoColor', headings[9][3]);
-      document.documentElement.style.setProperty('--classButtonColor', headings[9][4]);
+      document.documentElement.style.setProperty('--activeButtonColor', headings[9][4]);
       document.documentElement.style.setProperty('--policiesText', headings[9][5]);
       document.documentElement.style.setProperty('--policiesHeading', headings[9][6]);
       
@@ -180,6 +180,7 @@ $(document).ready(function() {
 
 // ========================================================================================================================
 // ** Instructors ** 
+
     database.ref().on("value", function(snapshot) {
       $("#instructors").html("")
       var instructors = snapshot.val()["instructors"];
@@ -210,7 +211,7 @@ $(document).ready(function() {
                   newInstructor_bio = newInstructor_bio + "<p>" + instructors[i][b] + "</p>"
               }
           }
-          var newInstructor_modal = '<div id="modal-'+i+'"class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'<img class="modal-img" src="assets/images/'+ instructors[i][1] +'"></div></div></div> </div>'
+          var newInstructor_modal = '<div id="modal-'+i+'"class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'<img class="modal-img" src="assets/images/'+ instructors[i][1] +'""><img class="modal-img" src="assets/images/'+ instructors[i][8] +'"></div></div></div> </div>'
 
 
 
@@ -235,45 +236,53 @@ $(document).ready(function() {
           $(this).data("hold", $(this).attr("src"))
       });
 
-    database.ref().on("value", function(snapshot) {
-        var about_us = snapshot.val()["about"];
+// ========================================================================================================================
+// ** Etiquette & About Us ** 
 
+  database.ref().on("value", function(snapshot) {
+    var about_us = snapshot.val()["about"];
 
-        var etiquette = ["dancer", "studio", "waiting-room", "changing-room", "recital"]
-      
-        function display_buttons(){
-          $(".buttons-div").html("")
-            for (e in etiquette){
-            $(".buttons-div").append('<button class="btn btn-etiquette" data-etiquetteType="'+ parseInt(parseInt(e) + 3)+'">'+about_us[parseInt(e)+3][0]+'</button><br>')
+    //  ** ETIQUETTE ** 
+
+    var etiquette = ["dancer", "studio", "waiting-room", "changing-room", "recital"]
+  
+    // Show etiquette buttons 
+    function display_buttons(){
+      $(".buttons-div").html("")
+        for (e in etiquette){
+        $(".buttons-div").append('<button class="btn btn-etiquette" data-etiquetteType="'+ parseInt(parseInt(e) + 3)+'">'+about_us[parseInt(e)+3][0]+'</button><br>')
+      }
+    }
+    display_buttons()
+
+    // When an etiquette button is clicked, display the corresponding content 
+
+    $('.buttons-div').on("click", ".btn-etiquette", function() {
+      $(".btn-etiquette").css("background-color", "var(--pageHeadingColor)" )
+      $(this).css("background-color", "var(--activeButtonColor)" )
+
+      var etiquetteType = $(this).data().etiquettetype;
+      console.log($(this).val())
+      $("#about-subheading-etiquette").html($(this).text() + " Etiquette")
+      for (var i = 1; i < 7; i++) {
+        $(".tabbed-content-" + i).html(about_us[etiquetteType][i])
+      }
+      if (about_us[etiquetteType][7]){
+        $(".tabbed-content-7").html("<img class='small-image' src="+about_us[etiquetteType][7]+">")
+      }else{
+        $(".tabbed-content-" + i).html("")
+      }
+    });
+
+    $("#about-subheading-etiquette").html(about_us[3][0] + " Etiquette")
+    for (var i = 1; i < 7; i++) {
+        $(".tabbed-content-" + i).html(about_us[3][i])
+        if (about_us[3][7]){
+            $(".tabbed-content-" + i).html("<img scr="+about_us[3][7]+">")
           }
-        }
+    }
 
-        display_buttons()
-
-        $('.buttons-div').on("click", ".btn-etiquette", function() {
-          $(".btn-etiquette").css("background-color", "var(--pageHeadingColor)" )
-          $(this).css("background-color", "var(--classButtonColor)" )
-
-          var etiquetteType = $(this).data().etiquettetype;
-          console.log($(this).val())
-          $("#about-subheading-etiquette").html($(this).text() + " Etiquette")
-          for (var i = 1; i < 7; i++) {
-            $(".tabbed-content-" + i).html(about_us[etiquetteType][i])
-          }
-          if (about_us[etiquetteType][7]){
-            $(".tabbed-content-7").html("<img class='small-image' src="+about_us[etiquetteType][7]+">")
-          }else{
-            $(".tabbed-content-" + i).html("")
-          }
-        });
-
-        $("#about-subheading-etiquette").html(about_us[3][0] + " Etiquette")
-        for (var i = 1; i < 7; i++) {
-            $(".tabbed-content-" + i).html(about_us[3][i])
-            if (about_us[3][7]){
-                $(".tabbed-content-" + i).html("<img scr="+about_us[3][7]+">")
-              }
-        }
+    //  ** ABOUT US ** 
 
     // section 1 content 
     $("#about-overview").html("<h5>"+about_us[0][1]+"</h5>")
@@ -289,56 +298,38 @@ $(document).ready(function() {
 
     }
     
-        
-    });
+});
 
-    database.ref().on("value", function(snapshot) {
-        var classes = snapshot.val()["classes"];
-
-        var display_class_choices = function(){
-            $("#class-type").html("")
-            $(".dance-classes").html('      <div class="col-md-6"><div id="classes-subheading-ballet"><button id="1" class="class-btn"></button> </div></div><div class="col-md-6"><div id="classes-subheading-tap"><button id="2"  class="class-btn"></button></div></div><div class="col-md-6"><div id="classes-subheading-jazz"><button id="3" class="class-btn"></button></div></div><div class="col-md-6"><div id="classes-subheading-pointe"><button id="4" class="class-btn"></button></div></div>')
-
-            for (var i = 1; i < 5; i++) {
-            $("#"+i).text(classes[i][0])
-            }
+// ========================================================================================================================
+// ** Classes ** 
 
 
+database.ref().on("value", function(snapshot) {
+    var classes = snapshot.val()["classes"];
+
+    var display_class_choices = function(){
+        $("#class-type").html("")
+        $(".dance-classes").html('<div class="col-md-6"><img class="class-icon" id="1" src="'+classes[1][2]+'"></div><div class="col-md-6"><img class="class-icon" id="2" src="'+classes[2][2]+'"></div><div class="col-md-6"><img class="class-icon" id="3" src="'+classes[3][2]+'"></div><div class="col-md-6"><img class="class-icon" id="4" src="'+classes[4][2]+'"></div>')
+
+        for (var i = 1; i < 5; i++) {
+        $("#"+i).text(classes[i][0])
         }
 
-        display_class_choices()
 
-        $('.dance-classes').on("click", ".class-btn", function() {
-            $("#class-type").html($(this).text())
-            $(".dance-classes").html("<div class='col-md-12'>" + classes[parseInt($(this).context.id)][1] + "</div>")
-        });
+    }
 
-        $('#exit-icon').on("click", function() {
-            display_class_choices()
-        });
-        // for (var i = 1; i < 6; i++) {
-        //     $("#"+i).text(classes[i][0])
-        // }
-        // $('.dance-class-buttons').on("click", ".class-btn", function() {
-        //     $("#class-type").text($(this).text())
-        //     $(".class-btn").css("color", "var(--classButtonColor")
-        //     $(this).css("color", "var(--mottoColor")
-        //     $("#dance-class-content").html(classes[parseInt($(this).context.id)][1])
-              
-        // });
+    display_class_choices()
 
-        // $("#dance-class-content").html(classes[1][1])
-
-        // $("#classes-overview").html("<ul>")
-
-        // $("#class-type").text(classes[1][0])
-        // for (var i = 7; i < 17; i++){
-        //     if (classes[i][1]){
-        //         $("#classes-overview").append("<li> "+ classes[i][1] + "</li><br>")
-        //     }
-        // }
-    
+    $('.dance-classes').on("click", ".class-icon", function() {
+        $("#class-type").html($(this).text())
+        $(".dance-classes").html("<div class='col-md-10 col-md-offset-1'><h5>" + classes[parseInt($(this).context.id)][1] + "</h5></div>")
     });
+
+    $('#exit-icon').on("click", function() {
+        display_class_choices()
+    });
+
+});
 
 
     database.ref().on("value", function(snapshot) {

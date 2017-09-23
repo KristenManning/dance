@@ -14,7 +14,7 @@
   --enlargedParagraphColor: #44435E;
   --mottoColor: #A7628B;
   --policiesBackground: #888888;
-  --classButtonColor: #5D6D7E;
+  --activeButtonColor: #5D6D7E;
   --policiesText: white;
   --policiesHeading: blue;
 
@@ -24,15 +24,33 @@ body, html {
     height: 100%;
 }
 #exit-icon{
-  font-size: 20px;
+  font-size: 16px;
   vertical-align: middle;
-  text-align: center;
 }
 #exit-icon-row{
   text-align: right;
+  vertical-align: middle;
+  font-size: 16px;
 }
+
+.class-icon{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 4%;
+  color: black;
+  border: solid; 
+  mix-blend-mode: multiply;
+  background-color: blue;
+}
+
 #reg-iframe{
   border: solid;
+}
+
+.dance-classes{
+  height: 800px;
+  overflow: scroll;
 }
 
 .policies{
@@ -153,7 +171,7 @@ body {
 
 #about-subheading-etiquette{
   font-size: 26px;
-  color: var(--classButtonColor);
+  color: var(--newsColor);
   font-weight: bold;
   text-align: center;
   font-style:bold;
@@ -164,7 +182,7 @@ body {
   padding: 2%;
   padding-top: 10%;
   font-size: 24px;
-  color: var(--classButtonColor);
+  color: var(--activeButtonColor);
   font-weight: bold;
   text-align: center;
   font-style:bold;
@@ -521,7 +539,7 @@ table > p{
   margin-bottom: 3%;
 }
 .about-section-etiquette{
-  height: 450px;
+  height: 700px;
   overflow: scroll;
 /*  background-color: var(--pageHeadingColor);*/
  /* color: var(--whiteColor);*/
@@ -541,12 +559,13 @@ h1{
 
 .btn-etiquette{
   width: 90%;
-  padding: 2%;
+  padding: 3%;
   padding-top: 4%;
   padding-bottom: 4%;
   margin: 2%;
   color: var(--whiteColor);
   font-weight: bold;
+  font-size: 20px;
   background-color: var(--pageHeadingColor);
 }
 
@@ -704,11 +723,10 @@ a{
 }
 
 .instructor-box{
-  margin-left: 5%;
-  width: 90%;
-  height: 250px;
-  margin-bottom: 2%;
-  margin-bottom: 2%;
+  margin-left: 1%;
+  width: 100%;
+  height: 350px;
+  margin-bottom: 4%;
   background-color: var(--newsColor);
   position: relative;
 /*  border: solid;*/
@@ -717,7 +735,7 @@ a{
 .instructor-info{
   position: absolute;
   left: 20%;
-  top: 65%;
+  top: 75%;
   background-color: var(--newsColor);
   padding-left: 2%;
   width: 80%;
@@ -753,4 +771,42 @@ a{
 .class-btn{
   border: none;
   background: none;
+}
+
+
+#test-blend-mode-1{
+
+        background-image: url("../images/pointe-shoes-altered.jpg");
+  background-position: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #FADBD8;
+  background-blend-mode: multiply;
+    height: 300px;
+  width: 400px;
+
+}
+
+#test-blend-mode-2{
+
+      background-image: url("../images/tap-shoes-altered.jpg");
+  background-position: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #EBDEF0;
+  background-blend-mode: multiply;
+    height: 300px;
+  width: 400px;
+}
+
+#test-blend-mode-3{
+    background-image: url("../images/jazz-shoes-altered.jpg");
+  background-position: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #888888;
+  background-blend-mode: multiply;
+    height: 300px;
+  width: 400px;
+
 }
