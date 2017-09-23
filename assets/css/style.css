@@ -780,7 +780,7 @@ a{
   background-position: auto;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #FADBD8;
+  background-color: var(--pointeColor);
   background-blend-mode: multiply;
     height: 300px;
   width: 400px;
@@ -797,7 +797,7 @@ h4{
   background-position: auto;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #EBDEF0;
+  background-color: var(--tapColor);
   background-blend-mode: multiply;
     height: 300px;
   width: 400px;
@@ -808,7 +808,7 @@ h4{
   background-position: auto;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #888888;
+  background-color: var(--jazzColor);
   background-blend-mode: multiply;
     height: 300px;
   width: 400px;
