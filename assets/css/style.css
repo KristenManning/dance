@@ -787,6 +787,10 @@ a{
 
 }
 
+h4{
+  color: black;
+}
+
 #test-blend-mode-2{
 
       background-image: url("../images/tap-shoes-altered.jpg");
