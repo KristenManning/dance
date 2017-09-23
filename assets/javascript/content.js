@@ -1,8 +1,6 @@
 
 $(document).ready(function() {
 
-
-
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyD8J6gNDFLxiT-W3QgLpP83TQ6NJ5cWIeo",
@@ -17,126 +15,62 @@ $(document).ready(function() {
 
   var database = firebase.database();
 
-    // database.ref().on("value", function(snapshot) {
-    // $("#testing").html("")
-    // var masterSheet = snapshot.val();
-    // console.log(masterSheet)
-    // var data = masterSheet["masterSheet"][1]
-    // $("#testing").append(data)
+// ========================================================================================================================
+// ** Color Variables ** 
 
-    // })
+  database.ref().on("value", function(snapshot) {
+      var headings = snapshot.val()["pageHeadings"];
+      $("#nav-and-news").html(headings[3][1])
 
+      document.documentElement.style.setProperty('--newsColor', headings[5][1]);
+      document.documentElement.style.setProperty('--navColor', headings[5][2]);
+      document.documentElement.style.setProperty('--pageHeadingColor', headings[5][3]);
+      document.documentElement.style.setProperty('--balletColor', headings[7][1]);
+      document.documentElement.style.setProperty('--tapColor', headings[7][2]);
+      document.documentElement.style.setProperty('--jazzColor', headings[7][3]);
+      document.documentElement.style.setProperty('--comboColor', headings[7][4]);
+      document.documentElement.style.setProperty('--pointeColor', headings[7][5]);
+      document.documentElement.style.setProperty('--standardTextColor', headings[9][1]);
+      document.documentElement.style.setProperty('--enlargedParagraphColor', headings[9][2]);
+      document.documentElement.style.setProperty('--mottoColor', headings[9][3]);
+      document.documentElement.style.setProperty('--classButtonColor', headings[9][4]);
+      document.documentElement.style.setProperty('--policiesText', headings[9][5]);
+      document.documentElement.style.setProperty('--policiesHeading', headings[9][6]);
+      
+  })
 
+// ========================================================================================================================
+// ** Headings ** 
 
-    database.ref().on("value", function(snapshot) {
-        var headings = snapshot.val()["pageHeadings"];
-        $("#nav-and-news").html(headings[3][1])
+  database.ref().on("value", function(snapshot) {
+      var headings = snapshot.val()["pageHeadings"];
+      for (h in headings[2]){
+        console.log(headings[2][h])
+        $(headings[2][h]).html("<h1>" + headings[1][h] + "</h1>")
 
-        document.documentElement.style.setProperty('--newsColor', headings[5][1]);
-        document.documentElement.style.setProperty('--navColor', headings[5][2]);
-        document.documentElement.style.setProperty('--pageHeadingColor', headings[5][3]);
-        document.documentElement.style.setProperty('--balletColor', headings[7][1]);
-        document.documentElement.style.setProperty('--tapColor', headings[7][2]);
-        document.documentElement.style.setProperty('--jazzColor', headings[7][3]);
-        document.documentElement.style.setProperty('--comboColor', headings[7][4]);
-        document.documentElement.style.setProperty('--pointeColor', headings[7][5]);
-        document.documentElement.style.setProperty('--standardTextColor', headings[9][1]);
-        document.documentElement.style.setProperty('--enlargedParagraphColor', headings[9][2]);
-        document.documentElement.style.setProperty('--mottoColor', headings[9][3]);
-        document.documentElement.style.setProperty('--classButtonColor', headings[9][4]);
-        document.documentElement.style.setProperty('--policiesText', headings[9][5]);
-        document.documentElement.style.setProperty('--policiesHeading', headings[9][6]);
-        
-    })
-
-
-    database.ref().on("value", function(snapshot) {
-        var headings = snapshot.val()["pageHeadings"];
-        for (h in headings[2]){
-          console.log(headings[2][h])
-          $(headings[2][h]).html("<h1>" + headings[1][h] + "</h1>")
-
-        }
-
-
-    })
-
-    database.ref().on("value", function(snapshot) {
-    $("#instructors").html("")
-    var instructors = snapshot.val()["instructors"];
-
-    for (var i in instructors) {
-      if (instructors[i][0] && instructors[i][0] != "FullName"){
-        // new box 
-        var newInstructor = $("<div class='col-md-4'>")
-
-        var instructorImage =$("<div class='instructor-box'>")
-        instructorImage.append("<img id='instr"+i+"' class='instructor-image' data-switch='assets/images/logo.jpg' data-hold='assets/images/" + instructors[i][1] + "' src='assets/images/" + instructors[i][1] + "'>")
-
-        // name & role 
-        var newInstructor_name = "<a data-target='#modal-"+i+"' data-toggle='modal' href='#modal-"+i+"'><h5> " + instructors[i][0] + " </h5></a>"
-        var newInstructor_role = "<p>" + instructors[i][2] + "</p>"
-        var instructorInfo = $("<div class='instructor-info'>")
-        instructorInfo.append(newInstructor_name)
-        instructorInfo.append(newInstructor_role)
-        instructorImage.append(instructorInfo)
-
-        
-        // $("#instr"+i).on({'click': function(){
-        //     alert("hi")
-        //     $("#instr"+i).attr('src','assets/images/logo.jpg');
-        //     }
-        // });
-   
-
-        // create bio modal 
-        var newInstructor_bio = ""
-        for (var b = 3; b < 8; b++) {
-            if (instructors[i][b]){
-                newInstructor_bio = newInstructor_bio + "<p>" + instructors[i][b] + "</p>"
-            }
-        }
-        var newInstructor_modal = '<div id="modal-'+i+'"class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'</div></div></div> </div>'
-
-
-
-        newInstructor.html(instructorImage)
-        $("#modals").append(newInstructor_modal)
-        $("#instructors").append(newInstructor)
-        }
       }
 
-    })
 
-    $(document).on("mouseenter", ".instructor-image", function(e) {
-        $(this).attr("src", $(this).data("switch"))
-        $(this).data("switch", $(this).data("hold"))
-        $(this).data("hold", $(this).attr("src"))
-    });
+  })
 
-    $(document).on("mouseleave", ".instructor-image", function(e) {
-        $(this).attr("src", $(this).data("switch"))
-        $(this).data("switch", $(this).data("hold"))
-        $(this).data("hold", $(this).attr("src"))
-    });
+// ========================================================================================================================
+// ** Schedule ** 
 
+  database.ref().on("value", function(snapshot) {
+  $("#schedule").html("")
+  var sched = snapshot.val()["schedule"];
 
-    database.ref().on("value", function(snapshot) {
-    $("#schedule").html("")
-    var sched = snapshot.val()["schedule"];
+  var reset_tiles = function(){
+      $(".class-tile").html("")
+      $(".class-tile").removeClass( "default-background" )
+      $("#displayed-style").text("")
+  }
 
-    var reset_tiles = function(){
-        $(".class-tile").html("")
-        $(".class-tile").removeClass( "default-background" )
-        $("#displayed-style").text("")
-    }
+  var display_all_classes = function(sched){
+      reset_tiles()
 
-    var display_all_classes = function(sched){
-        reset_tiles()
-
-        for (var c in sched) {
-
-        
+      for (var c in sched) {
+      
         var day = sched[c][0]
         var time =sched[c][1]
 
@@ -152,101 +86,154 @@ $(document).ready(function() {
         tile.append("<p class='song tiny-text'>"+ tile_song + "</p>")
         tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
         tile.addClass( styling + "-background" )
+      }
+  }
+  
 
+  var filter_by = function(dance_style) {
+      reset_tiles()
+      for (var c in sched) {
+          var day = sched[c][0]
+          var time =sched[c][1]
+          if (sched[c][6] == dance_style){
+              var tile_style = sched[c][2]
+              var tile_age = sched[c][3]
+              var tile_other = sched[c][5]
+              var styling = sched[c][6]
+              var tile = $(time + " > " + day + " > .class-tile")
+              tile.html("")
+              tile.append("<h4>"+ tile_age + "</h4>")
+              tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
+              tile.addClass( styling + "-background" )
+          }
+          else{
+              var tile = $(time + " > " + day + " > .class-tile")
+              tile.addClass( "default-background" )
+          }
+          
+      }
+      $("#displayed-style").text(tile_style + " Offerings by Age/Grade")
+
+
+  }
+
+  var filter_by_combo = function(style1, style2) {
+      reset_tiles()
+      for (var c in sched) {
+          var day = sched[c][0]
+          var time =sched[c][1]
+          var check_style = sched[c][2]
+          if (sched[c][6] == "combo" && check_style.includes(style1) && check_style.includes(style2)){
+
+              var tile_style = sched[c][2]
+              var tile_age = sched[c][3]
+              var tile_other = sched[c][5]
+              var styling = sched[c][6]
+              var tile = $(time + " > " + day + " > .class-tile")
+              tile.html("")
+              tile.append("<h4>"+ tile_age + "</h4>")
+              tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
+              tile.addClass( styling + "-background" )
+          
+
+          }else{
+              var tile = $(time + " > " + day + " > .class-tile")
+              tile.addClass( "default-background" )
+          }
+          
+      }
+    $("#displayed-style").text(tile_style + " Offerings by Age/Grade")
+  }
+  
+  $('#ballet-filter').on("click", function() {
+        filter_by("ballet")
+  });
+
+  $('#tap-filter').on("click", function() {
+        filter_by("tap")
+  });
+
+  $('#jazz-filter').on("click", function() {
+        filter_by("jazz")
+  });
+
+  $('#ballet-jazz-combo-filter').on("click", function() {
+        filter_by_combo("Ballet", "Jazz")
+  });
+
+  $('#pointe-filter').on("click", function() {
+        filter_by("pointe")
+  });
+
+  $('#tap-jazz-combo-filter').on("click", function() {
+        filter_by_combo("Tap", "Jazz")
+  });
+
+  $('#all-filter').on("click", function() {
+        display_all_classes(sched)
+  });
+
+  // On page load 
+  display_all_classes(sched)
+  
+  });
+
+// ========================================================================================================================
+// ** Instructors ** 
+    database.ref().on("value", function(snapshot) {
+      $("#instructors").html("")
+      var instructors = snapshot.val()["instructors"];
+
+      // Build instructor tiles & modals 
+      for (var i in instructors) {
+        if (instructors[i][0] && instructors[i][0] != "FullName"){
+          // new box 
+          var newInstructor = $("<div class='col-md-4'>")
+
+          var instructorImage =$("<div class='instructor-box'>")
+          instructorImage.append("<img id='instr"+i+"' class='instructor-image' data-switch='assets/images//" + instructors[i][7] + "' data-hold='assets/images/" + instructors[i][1] + "' src='assets/images/" + instructors[i][1] + "'>")
+
+          // name & role 
+          var newInstructor_name = "<a data-target='#modal-"+i+"' data-toggle='modal' href='#modal-"+i+"'><h5> " + instructors[i][0] + " </h5></a>"
+          var newInstructor_role = "<p>" + instructors[i][2] + "</p>"
+          var instructorInfo = $("<div class='instructor-info'>")
+          instructorInfo.append(newInstructor_name)
+          instructorInfo.append(newInstructor_role)
+          instructorImage.append(instructorInfo)
+
+     
+
+          // create bio modal 
+          var newInstructor_bio = ""
+          for (var b = 3; b < 6; b++) {
+              if (instructors[i][b]){
+                  newInstructor_bio = newInstructor_bio + "<p>" + instructors[i][b] + "</p>"
+              }
+          }
+          var newInstructor_modal = '<div id="modal-'+i+'"class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'<img class="modal-img" src="assets/images/'+ instructors[i][1] +'"></div></div></div> </div>'
+
+
+
+          newInstructor.html(instructorImage)
+          $("#modals").append(newInstructor_modal)
+          $("#instructors").append(newInstructor)
+          }
         }
 
-    }
-    
+      })
 
-    var filter_by = function(dance_style) {
-        reset_tiles()
-        for (var c in sched) {
-            var day = sched[c][0]
-            var time =sched[c][1]
-            if (sched[c][6] == dance_style){
-                var tile_style = sched[c][2]
-                var tile_age = sched[c][3]
-                var tile_other = sched[c][5]
-                var styling = sched[c][6]
-                var tile = $(time + " > " + day + " > .class-tile")
-                tile.html("")
-                tile.append("<h4>"+ tile_age + "</h4>")
-                tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
-                tile.addClass( styling + "-background" )
-            }
-            else{
-                var tile = $(time + " > " + day + " > .class-tile")
-                tile.addClass( "default-background" )
-            }
-            
-        }
-        $("#displayed-style").text(tile_style + " Offerings by Age/Grade")
+      // On hover, switch to baby picture 
+      $(document).on("mouseenter", ".instructor-image", function(e) {
+          $(this).attr("src", $(this).data("switch"))
+          $(this).data("switch", $(this).data("hold"))
+          $(this).data("hold", $(this).attr("src"))
+      });
 
-
-    }
-
-    var filter_by_combo = function(style1, style2) {
-        reset_tiles()
-        for (var c in sched) {
-            var day = sched[c][0]
-            var time =sched[c][1]
-            var check_style = sched[c][2]
-            if (sched[c][6] == "combo" && check_style.includes(style1) && check_style.includes(style2)){
-
-                var tile_style = sched[c][2]
-                var tile_age = sched[c][3]
-                var tile_other = sched[c][5]
-                var styling = sched[c][6]
-                var tile = $(time + " > " + day + " > .class-tile")
-                tile.html("")
-                tile.append("<h4>"+ tile_age + "</h4>")
-                tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
-                tile.addClass( styling + "-background" )
-            
-
-            }else{
-                var tile = $(time + " > " + day + " > .class-tile")
-                tile.addClass( "default-background" )
-            }
-            
-        }
-        $("#displayed-style").text(tile_style + " Offerings by Age/Grade")
-
-
-    }
-    
-    $('#ballet-filter').on("click", function() {
-          filter_by("ballet")
-    });
-
-    $('#tap-filter').on("click", function() {
-          filter_by("tap")
-    });
-
-    $('#jazz-filter').on("click", function() {
-          filter_by("jazz")
-    });
-
-    $('#ballet-jazz-combo-filter').on("click", function() {
-          filter_by_combo("Ballet", "Jazz")
-    });
-
-    $('#pointe-filter').on("click", function() {
-          filter_by("pointe")
-    });
-
-    $('#tap-jazz-combo-filter').on("click", function() {
-          filter_by_combo("Tap", "Jazz")
-    });
-
-    $('#all-filter').on("click", function() {
-          display_all_classes(sched)
-    });
-
-
-    display_all_classes(sched)
-    
-    });
+      $(document).on("mouseleave", ".instructor-image", function(e) {
+          $(this).attr("src", $(this).data("switch"))
+          $(this).data("switch", $(this).data("hold"))
+          $(this).data("hold", $(this).attr("src"))
+      });
 
     database.ref().on("value", function(snapshot) {
         var about_us = snapshot.val()["about"];
@@ -309,6 +296,7 @@ $(document).ready(function() {
         var classes = snapshot.val()["classes"];
 
         var display_class_choices = function(){
+            $("#class-type").html("")
             $(".dance-classes").html('      <div class="col-md-6"><div id="classes-subheading-ballet"><button id="1" class="class-btn"></button> </div></div><div class="col-md-6"><div id="classes-subheading-tap"><button id="2"  class="class-btn"></button></div></div><div class="col-md-6"><div id="classes-subheading-jazz"><button id="3" class="class-btn"></button></div></div><div class="col-md-6"><div id="classes-subheading-pointe"><button id="4" class="class-btn"></button></div></div>')
 
             for (var i = 1; i < 5; i++) {
@@ -481,91 +469,8 @@ $(document).ready(function() {
 
     });
 
-
-
-    // <div class = "rp-announcement">
-    //                   <h5 class = "rp-announcement-headline">Announcement 1 headline </h5>
-    //                   <p> This section will contain details about the announcement named above. This section will contain details about the announcement named above. This section will contain details about the announcement named above.</p>
-    //                   <p class="tiny-text date">01/01/01</p>
-    //               </div>
-
-
-    // var instructors = {0: {0: "Caley", 1: "caley.jpg", 2: "Manager", 3: "Caley Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. "}, 
-    //           1: {0: "Barbara", 1: "mrsg.jpg", 2: "Owner", 3: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. ",  4: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. ",  5: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. "}, 
-    //           2: {0: "Caley", 1: "caley.jpg", 2: "Manager", 3: "Caley Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. "}, 
-    //           3: {0: "Caley", 1: "caley.jpg", 2: "Manager", 3: "Caley Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here.  Lorem ipsum text here is what's here.  Lorem ipsum text here is what's here.  Lorem ipsum text here is what's here.  Lorem ipsum text here is what's here.  Lorem ipsum text here is what's here.  Lorem ipsum text here is what's here.  Lorem ipsum text here is what's here."}, 
-    //           4: {0: "Caley", 1: "caley.jpg", 2: "Manager", 3: "Caley Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. ", 4: "Lorem ipsum text here is what's here.  Lorem ipsum text here is what's here. "}, 
-    //           5: {0: "Barbara", 1: "mrsg.jpg", 2: "Owner", 3: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. ",  4: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. ",  5: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. ", 6: "Barbara Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. Lorem ipsum text here is what's here. "}, 
-    //         }
+  });
 
 
 
-        //       <div class="thumbnail">
-        //     <img src="..." alt="...">
-        //     <div class="caption">
-        //       <h5>Thumbnail label</h3>
-        //       <p>...</p>
-        //       <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-        //     </div>
-        //   </div>
-        // </div>
-
-});
-
-
-
-// Firebase example: 
-
-// $(document).ready(function() {
-  
-
-//   var config = {
-//     apiKey: "AIzaSyDmb865vMlKLHHXklvpj9Qxt0MY-XCMTbc",
-//     authDomain: "train-tracker-44c80.firebaseapp.com",
-//     databaseURL: "https://train-tracker-44c80.firebaseio.com",
-//     storageBucket: "train-tracker-44c80.appspot.com",
-//     messagingSenderId: "14249277472"
-//   };
-
-//     firebase.initializeApp(config);
-
-//     var database = firebase.database();
-
-//   // When a new emotion is submitted, add it to the emotions array and run the display buttons function again to display it  
-//   $(".btn-default").on("click", function() {
-//     var now = moment().format('HH:mm');
-//     var train = $("#u_train").val().trim();
-//     var destination = $("#u_destination").val().trim();
-//     var first_time = $("#u_first_time").val().trim();
-//     var first_time_con = moment(first_time, "HH:mm").subtract(1, "years");
-//     var frequency = $("#u_frequency").val().trim();
-
-//     var diff_in_time = moment().diff(moment(first_time_con), "minutes");
-//     var min_away = frequency - (diff_in_time % frequency);
-//     var next_time = moment(now, "HH:mm").add(min_away, "minutes").format("HH:mm");
     
-//     database.ref().push({
-        
-//       train: train,
-//       destination: destination,
-//       next_time: next_time,
-//       min_away: min_away,
-//       frequency: frequency,
-//     })
-
-//     return false
-//   });
-
-//   database.ref().on("value", function(snapshot) {
-//     $("tbody").html("")
-//     var outer_object = snapshot.val();
-//     var keys_array = Object.keys(outer_object)
-//     for (i in keys_array){
-//       var nested_obj = outer_object[keys_array[i]]
-//       $("tbody").append('<tr><td>'+nested_obj.train+'</td><td>'+nested_obj.destination+'</td><td>'+nested_obj.frequency+'</td><td>'+nested_obj.next_time+'</td><td>'+nested_obj.min_away+'</td></tr>');
-    
-//     }
-//     })
-
-
-  // });
