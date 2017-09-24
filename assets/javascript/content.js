@@ -274,13 +274,15 @@ $(document).ready(function() {
       }
     });
 
-    $("#about-subheading-etiquette").html(about_us[3][0] + " Etiquette")
-    for (var i = 1; i < 7; i++) {
-        $(".tabbed-content-" + i).html(about_us[3][i])
-        if (about_us[3][7]){
-            $(".tabbed-content-" + i).html("<img scr="+about_us[3][7]+">")
-          }
-    }
+    // $("#about-subheading-etiquette").html(about_us[3][0] + " Etiquette")
+    // for (var i = 1; i < 7; i++) {
+    //     $(".tabbed-content-" + i).html(about_us[3][i])
+    //     if (about_us[3][7]){
+    //         $(".tabbed-content-" + i).html("<img scr="+about_us[3][7]+">")
+    //       }
+    // }
+    $(".tabbed-content-1").html("<img src = ' https://www.oysterdiving.com/components/com_easyblog/themes/wireframe/images/placeholder-image.png '> ")
+   
 
     //  ** ABOUT US ** 
 
@@ -309,51 +311,67 @@ database.ref().on("value", function(snapshot) {
 
     var display_class_choices = function(){
         $("#class-type").html("")
-        $(".dance-classes").html('<div class="col-md-6"><img class="class-icon" id="1" src="'+classes[1][2]+'"></div><div class="col-md-6"><img class="class-icon" id="2" src="'+classes[2][2]+'"></div><div class="col-md-6"><img class="class-icon" id="3" src="'+classes[3][2]+'"></div><div class="col-md-6"><img class="class-icon" id="4" src="'+classes[4][2]+'"></div>')
+        $(".dance-classes").html('<div class="col-md-6 icon-container"><img class="class-icon" id="1" src="'+classes[1][2]+'"> <div class="ballet-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="2" src="'+classes[2][2]+'"> <div class="tap-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="3" src="'+classes[3][2]+'"> <div class="jazz-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="4" src="'+classes[4][2]+'"> <div class="pointe-label"></div></div>')
 
         for (var i = 1; i < 5; i++) {
         $("#"+i).text(classes[i][0])
         }
 
-
+        $('#exit-icon').on("click", function() {
+          display_class_choices()
+        });
     }
 
     display_class_choices()
 
     $('.dance-classes').on("click", ".class-icon", function() {
-        $("#class-type").html($(this).text())
+        $("#class-type").html($(this).text() + '<button id="exit-icon" class="glyphicon glyphicon-arrow-left"></button>')
         $(".dance-classes").html("<div class='col-md-10 col-md-offset-1'><h5>" + classes[parseInt($(this).context.id)][1] + "</h5></div>")
     });
 
-    $('#exit-icon').on("click", function() {
+    $('.dance-classes').on("mouseenter", ".class-icon", function() {
+        $(this).next().text($(this).text())
+        // $(this).parent().html("<h2> " + $(this).text() + "</h2>")
+    });
+
+    $('.dance-classes').on("mouseleave", ".class-icon", function() {
+        $(this).next().html("")
+    });
+
+    $('.main-content').on("click", "#exit-icon", function() {
         display_class_choices()
     });
 
 });
 
+// ========================================================================================================================
+// ** Announcements ** 
 
-    database.ref().on("value", function(snapshot) {
-    $(".rp-announcements").html("")
-    $("#reg-announce-heading").html("Registration &amp; Payment Announcements")
-    var announce = snapshot.val()["regAnnounce"];
-    for (var a in announce) {
-        var newAnnounce = $('<div class = "rp-announcement">')
-        var newAnnounce_headline = announce[a][0]
-        var newAnnounce_body = announce[a][1]
-        var newAnnounce_date = announce[a][2]
-        
-        newAnnounce.append("<h5 class = 'rp-announcement-headline'> " + newAnnounce_headline +  " </h5>")
-        newAnnounce.append("<p> " + newAnnounce_body +  " </p>")
-        newAnnounce.append('<p class="tiny-text date">' + newAnnounce_date +  '</p>')
 
-        console.log(newAnnounce)
-        if (newAnnounce_headline){
-            $(".rp-announcements").prepend(newAnnounce)
+database.ref().on("value", function(snapshot) {
+  $(".announcements").html("")
+  $("#announce-heading").html("Announcements")
 
-        }
+  var announce = snapshot.val()["regAnnounce"];
 
-    }
-    });
+  for (var a in announce) {
+      var newAnnounce = $('<div class = "announcement">')
+      var newAnnounce_headline = announce[a][0]
+      var newAnnounce_body = announce[a][1]
+      var newAnnounce_date = announce[a][2]
+      
+      newAnnounce.append("<h5 class = 'announcement-headline'> " + newAnnounce_headline +  " </h5>")
+      newAnnounce.append("<p> " + newAnnounce_body +  " </p>")
+      newAnnounce.append('<p class="tiny-text date">' + newAnnounce_date +  '</p>')
+
+      console.log(newAnnounce)
+      if (newAnnounce_headline){
+          $(".announcements").prepend(newAnnounce)
+      }
+
+  }
+
+});
 
     database.ref().on("value", function(snapshot) {
     $("#news").html("")
