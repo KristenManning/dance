@@ -36,6 +36,7 @@ $(document).ready(function() {
       document.documentElement.style.setProperty('--activeButtonColor', headings[9][4]);
       document.documentElement.style.setProperty('--policiesText', headings[9][5]);
       document.documentElement.style.setProperty('--policiesHeading', headings[9][6]);
+      document.documentElement.style.setProperty('--inactiveButtons', headings[9][7]);
       
   })
 
@@ -246,11 +247,10 @@ $(document).ready(function() {
 
     var etiquette = ["dancer", "studio", "waiting-room", "changing-room", "recital"]
   
-    // Show etiquette buttons 
+    // Show etiquette button text
     function display_buttons(){
-      $(".buttons-div").html("")
-        for (e in etiquette){
-        $(".buttons-div").append('<button class="btn btn-etiquette" data-etiquetteType="'+ parseInt(parseInt(e) + 3)+'">'+about_us[parseInt(e)+3][0]+'</button><br>')
+      for (var e=3; e<8; e++){
+        $("button[data-etiquetteType='"+e+"']").html(about_us[parseInt(e)][0])
       }
     }
     display_buttons()
@@ -258,7 +258,7 @@ $(document).ready(function() {
     // When an etiquette button is clicked, display the corresponding content 
 
     $('.buttons-div').on("click", ".btn-etiquette", function() {
-      $(".btn-etiquette").css("background-color", "var(--pageHeadingColor)" )
+      $(".btn-etiquette").css("background-color", "var(--inactiveButtons)" )
       $(this).css("background-color", "var(--activeButtonColor)" )
 
       var etiquetteType = $(this).data().etiquettetype;

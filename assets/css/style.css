@@ -17,6 +17,7 @@
   --activeButtonColor: #5D6D7E;
   --policiesText: white;
   --policiesHeading: blue;
+  --inactiveButtons: #AEB6BF;
 
 }
 
@@ -119,7 +120,7 @@ body {
 
 .news-ticker{
   background-color: var(--newsColor);
-  height: 150px;
+  height: 40px;
   vertical-align: middle;
   text-align: left;
   padding: 10px;
@@ -139,6 +140,12 @@ body {
 #nav-and-news{
   position: relative;
   z-index: 1000;
+}
+
+.nav a {
+  font-size: 14px;
+  font-weight: bold;
+/*  color: white;*/
 }
 /*
 @media (min-width: 768px) {
@@ -187,10 +194,16 @@ body {
   font-size: 26px;
   color: var(--newsColor);
   font-weight: bold;
-  text-align: center;
   font-style:bold;
 
 }
+
+#etiquette-image{
+  height: 400px;
+  width: auto;
+  filter: invert(100%);
+}
+
 
 #classes-subheading-ballet, #classes-subheading-tap ,#classes-subheading-jazz ,#classes-subheading-pointe ,#classes-subheading-combinations{
   padding: 2%;
@@ -203,7 +216,8 @@ body {
 }
 
 .about-section-etiquette{
-  padding: 2%;
+  height: 500px;
+  padding: 4%;
 }
 
 .about-block{
@@ -414,13 +428,25 @@ th{
   color: #D5D5D5;
 }
 
+.schedule{
+  background-color: var(--pageHeadingColor)
+}
+
+.schedule th, .schedule td{
+  text-align: center;
+  vertical-align: middle;
+}
+
+.class-tile{
+  text-align: left;
+}
 .dsp-info, .current-announcements{
   padding: 5%;
 }
 
 .class-tile{
-  width: 140px;
-  height: 95px;
+  width: 150px;
+  height: 85px;
   overflow: scroll;
 
  /* border: solid;*/
@@ -542,15 +568,7 @@ table > p{
     color: white;
 
  }
-#etiquette{
-  margin-bottom: 3%;
-}
-.about-section-etiquette{
-  height: 700px;
-  overflow: scroll;
-/*  background-color: var(--pageHeadingColor);*/
- /* color: var(--whiteColor);*/
-}
+
 h1{
   margin: 0px;
   margin-bottom: 1%;
@@ -565,22 +583,42 @@ h1{
 }
 
 .btn-etiquette{
-  width: 90%;
-  padding: 3%;
-  padding-top: 4%;
-  padding-bottom: 4%;
-  margin: 2%;
+  width: auto;
   color: var(--whiteColor);
   font-weight: bold;
-  font-size: 20px;
-  background-color: var(--pageHeadingColor);
+  font-size: 24px;
+  background-color: var(--inactiveButtons);
+  height: 80%;
+  padding-left: 1%;
+  padding-right: 1%;
+  border: none;
+  text-align: left;
+
+}
+
+button:focus {outline:0;}
+
+.buttons-div{
+  text-align: right;
+  height: 100px;
+  margin: 0px;
+  padding: 1%;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: var(--inactiveButtons);
+}
+
+.nav-row{
+  vertical-align: middle;
 }
 
 
+
 #logo{
-  width: 85px;
+  width: 40px;
   height: auto;
-  background: transparent;
+  text-align: center;
+  filter: invert(100%);
 }
 
 nav{
@@ -623,12 +661,18 @@ h3{
     float:none;
 }
 
-.brand{
-  font-size: 60px;
+.studio-name{
+  text-align: center;
+}
+.nav .brand{
+  font-size: 32px;
+  line-height: 32px;
   font-family: 'Petit Formal Script', cursive;
   font-weight: bold;
-  color: #D5D5D5;
+  color: var(--newsColor);
 }
+
+
 /*
 @media (min-width: 768px) {
     .brand{
@@ -719,6 +763,9 @@ a{
 /*  box-shadow: 0 2px 4px 0, 0 3px 4px 0;*/
 }
 
+.landing-page{
+  text-align: center;
+}
 #motto{
   width: 100%;
   font-size: 36px;
@@ -763,10 +810,6 @@ a{
     margin-top:20px;
 }
 
-.buttons-div{
-  padding-top: 5%;
-  text-align: center;
-}
 
 .thumbnail {
     padding: 0;
