@@ -25,6 +25,8 @@ $(document).ready(function() {
       document.documentElement.style.setProperty('--newsColor', headings[5][1]);
       document.documentElement.style.setProperty('--navColor', headings[5][2]);
       document.documentElement.style.setProperty('--pageHeadingColor', headings[5][3]);
+      document.documentElement.style.setProperty('--policiesBackground', headings[5][4]);
+      
       document.documentElement.style.setProperty('--balletColor', headings[7][1]);
       document.documentElement.style.setProperty('--tapColor', headings[7][2]);
       document.documentElement.style.setProperty('--jazzColor', headings[7][3]);
