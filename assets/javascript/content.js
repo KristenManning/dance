@@ -281,8 +281,6 @@ $(document).ready(function() {
     //         $(".tabbed-content-" + i).html("<img scr="+about_us[3][7]+">")
     //       }
     // }
-    $(".tabbed-content-1").html("<img src = ' https://www.oysterdiving.com/components/com_easyblog/themes/wireframe/images/placeholder-image.png '> ")
-   
 
     //  ** ABOUT US ** 
 
@@ -315,6 +313,8 @@ database.ref().on("value", function(snapshot) {
 
         for (var i = 1; i < 5; i++) {
         $("#"+i).text(classes[i][0])
+
+        $(".click-instructions").text("Click on an image to view details about our classes.")
         }
 
         $('#exit-icon').on("click", function() {
@@ -327,6 +327,7 @@ database.ref().on("value", function(snapshot) {
     $('.dance-classes').on("click", ".class-icon", function() {
         $("#class-type").html($(this).text() + '<button id="exit-icon" class="glyphicon glyphicon-arrow-left"></button>')
         $(".dance-classes").html("<div class='col-md-10 col-md-offset-1'><h5>" + classes[parseInt($(this).context.id)][1] + "</h5></div>")
+        $(".click-instructions").text("")
     });
 
     $('.dance-classes').on("mouseenter", ".class-icon", function() {
