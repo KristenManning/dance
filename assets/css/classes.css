@@ -1,0 +1,159 @@
+	#exit-icon{
+	  font-size: 24px;
+	  left: 80%;
+	  border: none;
+	  background: none;
+	}
+
+	.class-icon{
+	  width: 100%;
+	  height: 400px;
+	  object-fit: cover;
+	  margin: 0px;
+	  padding: 0px;
+	}
+
+	.icon-container{
+	  margin: 0px;
+	  padding: 0px;
+	  text-align: center;
+
+	}
+
+	.dance-classes{
+		width: 100%;
+	  height: 100%;
+	  overflow: scroll;
+	}
+
+#dance-class-content{
+  padding: 1%;
+  color: var(--newsColor);
+  font-size: 18px;
+}
+
+#classes-overview, #about-overview, #about-section-2{
+/*  background-color: #96858F;*/
+  padding: 1%;
+  padding-left: 3%;
+  padding-right: 3%;
+  color: #888888; 
+}
+
+.classes-subheading{
+  font-size: 26px;
+  color: #D5D5D5;
+  margin: 10px;
+}
+.classes-block{
+  padding: 1%;
+
+  opacity: 0.7;
+  font-size: 18px;
+  color: #D5D5D5;
+  margin: 1%;
+}
+
+.class-style{
+  padding: 2%;
+}
+
+.tap-label, .pointe-label, .jazz-label, .ballet-label{
+    font-size: 90px;
+    font-family: 'Petit Formal Script', cursive;
+    position: absolute;
+    font-weight: bold;
+    bottom: 15px;
+    left: 25px;
+}
+.tap-label {
+
+    color: var(--tapColor);
+}
+
+/* Top left text */
+.pointe-label {
+
+    color: var(--pointeColor);
+}
+
+/* Top right text */
+.jazz-label {
+
+    color: var(--jazzColor);
+}
+
+/* Bottom right text */
+.ballet-label {
+    color: var(--balletColor);
+}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+	#exit-icon{
+	  font-size: 24px;
+	  left: 90%;
+	  border: none;
+	  background: none;
+	}
+
+.class-icon{
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  margin: 0px;
+  padding: 0px;
+}
+
+.icon-container{
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+
+}
+
+.dance-classes{
+  height: 750px;
+  overflow: scroll;
+ }
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+	#exit-icon{
+	  font-size: 24px;
+	  left: 90%;
+	  border: none;
+	  background: none;
+	}
+
+.class-icon{
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  margin: 0px;
+  padding: 0px;
+}
+
+.icon-container{
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+.dance-classes{
+  height: 750px;
+  overflow: scroll;
+  margin: 0px;
+ }
+
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+
+}

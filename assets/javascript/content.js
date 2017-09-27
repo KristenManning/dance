@@ -192,7 +192,7 @@ $(document).ready(function() {
       for (var i in instructors) {
         if (instructors[i][0] && instructors[i][0] != "FullName"){
           // new box 
-          var newInstructor = $("<div class='col-md-4'>")
+          var newInstructor = $("<div class='col-md-4 col-xs-6 col-sm-6'>")
 
           var instructorImage =$("<div class='instructor-box'>")
           instructorImage.append("<img id='instr"+i+"' class='instructor-image' data-switch='assets/images//" + instructors[i][7] + "' data-hold='assets/images/" + instructors[i][1] + "' src='assets/images/" + instructors[i][1] + "'>")
@@ -209,12 +209,12 @@ $(document).ready(function() {
 
           // create bio modal 
           var newInstructor_bio = ""
-          for (var b = 3; b < 6; b++) {
+          for (var b = 3; b < 7; b++) {
               if (instructors[i][b]){
-                  newInstructor_bio = newInstructor_bio + "<p>" + instructors[i][b] + "</p>"
+                  newInstructor_bio = newInstructor_bio + "<h5>" + instructors[i][b] + "</h5>"
               }
           }
-          var newInstructor_modal = '<div id="modal-'+i+'"class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">'+instructors[i][0]+'</h4></div><div class="modal-body">' + newInstructor_bio +'<img class="modal-img" src="assets/images/'+ instructors[i][1] +'""><img class="modal-img" src="assets/images/'+ instructors[i][8] +'"></div></div></div> </div>'
+          var newInstructor_modal = '<div id="modal-'+i+'"class="modal fade modal-lg" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h2 class="modal-title">'+instructors[i][0]+'</h2></div><div class="modal-body">' + newInstructor_bio +'<img class="modal-img" src="assets/images/'+ instructors[i][1] +'""><img class="modal-img" src="assets/images/'+ instructors[i][8] +'"></div></div></div> </div>'
 
 
 
@@ -311,7 +311,7 @@ database.ref().on("value", function(snapshot) {
 
     var display_class_choices = function(){
         $("#class-type").html("")
-        $(".dance-classes").html('<div class="col-md-6 icon-container"><img class="class-icon" id="1" src="'+classes[1][2]+'"> <div class="ballet-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="2" src="'+classes[2][2]+'"> <div class="tap-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="3" src="'+classes[3][2]+'"> <div class="jazz-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="4" src="'+classes[4][2]+'"> <div class="pointe-label"></div></div>')
+        $(".dance-classes").html('<div class="col-md-6 col-sm-6 icon-container"><img class="class-icon" id="1" src="'+classes[1][2]+'"> <div class="ballet-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="2" src="'+classes[2][2]+'"> <div class="tap-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="3" src="'+classes[3][2]+'"> <div class="jazz-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="4" src="'+classes[4][2]+'"> <div class="pointe-label"></div></div>')
 
         for (var i = 1; i < 5; i++) {
         $("#"+i).text(classes[i][0])
