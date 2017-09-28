@@ -214,7 +214,7 @@ $(document).ready(function() {
                   newInstructor_bio = newInstructor_bio + "<h5>" + instructors[i][b] + "</h5>"
               }
           }
-          var newInstructor_modal = '<div id="modal-'+i+'"class="modal fade modal-lg" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h2 class="modal-title">'+instructors[i][0]+'</h2></div><div class="modal-body">' + newInstructor_bio +'<img class="modal-img" src="assets/images/'+ instructors[i][1] +'""><img class="modal-img" src="assets/images/'+ instructors[i][8] +'"></div></div></div> </div>'
+          var newInstructor_modal = '<div id="modal-'+i+'"class="modal fade modal" role="dialog"> <div class="modal-dialog"> <div class="modal-content"><div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h2 class="modal-title">'+instructors[i][0]+'</h2></div><div class="modal-body">' + newInstructor_bio +'<img class="modal-img" src="assets/images/'+ instructors[i][1] +'""><img class="modal-img" src="assets/images/'+ instructors[i][8] +'"></div></div></div> </div>'
 
 
 
@@ -311,7 +311,7 @@ database.ref().on("value", function(snapshot) {
 
     var display_class_choices = function(){
         $("#class-type").html("")
-        $(".dance-classes").html('<div class="col-md-6 col-sm-6 icon-container"><img class="class-icon" id="1" src="'+classes[1][2]+'"> <div class="ballet-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="2" src="'+classes[2][2]+'"> <div class="tap-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="3" src="'+classes[3][2]+'"> <div class="jazz-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="4" src="'+classes[4][2]+'"> <div class="pointe-label"></div></div>')
+        $(".dance-classes").html('<div class="col-md-6 col-sm-6 col-xs-12 icon-container"><img class="class-icon" id="1" src="'+classes[1][2]+'"> <div class="ballet-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="2" src="'+classes[2][2]+'"> <div class="tap-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="3" src="'+classes[3][2]+'"> <div class="jazz-label"></div></div><div class="col-md-6 icon-container"><img class="class-icon" id="4" src="'+classes[4][2]+'"> <div class="pointe-label"></div></div>')
 
         for (var i = 1; i < 5; i++) {
         $("#"+i).text(classes[i][0])
@@ -411,10 +411,10 @@ database.ref().on("value", function(snapshot) {
     $("#photos").html("")
     var photos = snapshot.val()["photos"];
     for (var p in photos) {
-        var newPhoto = $("<div class='col-sm-2 col-md-1 gallery-image-box'>")
-        var newPhoto_link = photos[p][0]
+        var newPhoto = $("<div class='gallery-image-box'>")
+        var newPhoto_link = photos[p][1]
     
-        newPhoto.append("<img class='gallery-image' src='" + newPhoto_link + "'>")
+        newPhoto.append("<img class='gallery-image' src='assets/images/" + newPhoto_link + "'>")
         
         if (newPhoto_link){
             $("#photos").prepend(newPhoto)

@@ -1,5 +1,99 @@
+.chalk-text{
+  opacity: 0.7; 
+  font-size: 18px;
+  color: var(--tapColor);
+  font-family: 'Caveat Brush', cursive;
+  font-weight: bolder;
+}
+
+.chalk-heading{
+  opacity: 0.7; 
+  font-size: 45px;
+  color: var(--pointeColor);
+  text-align: center;
+  font-family: 'Homemade Apple', cursive;
+  font-weight: bolder;
+}
+
+.chalk-question{
+  opacity: 0.7; 
+  font-size: 26px;
+  line-height: 30px;
+  color: var(--pointeColor);
+  font-family: 'Caveat Brush', cursive;
+  font-weight: bolder;
+  text-align: center;
+  border:solid 2px;
+  border-radius: 255px 15px 225px 15px/15px;
+}
+
+#chalk-it-up{
+ /* background: url("../images/board.jpg"); */
+/*  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: ;*/
+/*  background-size: 100% auto;                  
+    background-repeat:   repeat;
+    background-position: center center; */   
+
+  background-image: url(../images/chalk3.jpg);
+  background-size: 100% auto;
+  background-repeat:repeat;
+  opacity: 0.8;
+  padding: 3%;
+  padding-bottom: 70px; 
+  height: 800px;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
+
+  .chalk-text{
+  opacity: 0.7; 
+  font-size: 24px;
+  color: var(--tapColor);
+  font-family: 'Caveat Brush', cursive;
+  font-weight: bolder;
+}
+
+.chalk-heading{
+  opacity: 0.7; 
+  font-size: 70px;
+  color: var(--pointeColor);
+  text-align: center;
+  font-family: 'Homemade Apple', cursive;
+  font-weight: bolder;
+}
+
+.chalk-question{
+  opacity: 0.7; 
+  font-size: 40px;
+  line-height: 60px;
+  color: var(--pointeColor);
+  font-family: 'Caveat Brush', cursive;
+  font-weight: bolder;
+  text-align: center;
+  border:solid 5px;
+  border-radius: 255px 15px 225px 15px/15px;
+}
+
+#chalk-it-up{
+ /* background: url("../images/board.jpg"); */
+/*  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: ;*/
+/*  background-size: 100% auto;                  
+    background-repeat:   repeat;
+    background-position: center center; */   
+
+  background-image: url(../images/chalk3.jpg);
+  background-size: 100% auto;
+  background-repeat:repeat;
+  opacity: 0.8;
+  padding: 3%;
+  padding-bottom: 70px; 
+  height: 800px;
+}
 
 
 }

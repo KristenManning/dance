@@ -1,0 +1,82 @@
+
+.schedule{
+  background-color: var(--pageHeadingColor);
+}
+
+.schedule th, .schedule td{
+  text-align: center;
+  vertical-align: middle;
+}
+
+.class-tile{
+  width: 85%;
+  margin-left: 7.5%;
+  height: 90px;
+  padding: 2%;
+  padding-left: 4%;
+  text-align: left;
+}
+
+.class-tile>p, .class-tile>h6, .class-tile>.tiny-text{
+  color: black;
+}
+
+.song{
+  font-style: italic;
+}
+
+.class-time{
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  .schedule{
+  background-color: var(--pageHeadingColor);
+  width: 100%;
+  }
+
+  .schedule th, .schedule td{
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .class-tile{
+    width: 85%;
+    margin-left: 7.5%;
+    height: 90px;
+    padding: 2%;
+    padding-left: 4%;
+    text-align: left;
+  }
+
+  .class-tile>p, .class-tile>h6, .class-tile>.tiny-text{
+    color: black;
+  }
+
+  .song{
+    font-style: italic;
+  }
+
+  .class-time{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+
+  }
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+
+}

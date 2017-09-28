@@ -1,0 +1,41 @@
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    z-index: 0;
+
+}
+
+.slideshow{
+  margin-top: 1%;
+}
+
+.news-box{
+  background-color: #83EBF3;
+  padding: 2%;
+}
+
+.news-box>p{
+  color: var(--newsColor);
+}
+
+.news-box>a{
+  color: #D5D5D5;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+
+}

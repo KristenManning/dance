@@ -1,3 +1,25 @@
+.reg-table{
+  width:50%;
+  border: solid;
+  margin: 5%;
+  color: black;
+}
+
+table > p{
+  color: black;
+}
+
+#aside{
+  text-align: right;
+  padding: 1%;
+  color: white;
+}
+
+#reg-table-title{
+  padding: 1%;
+  color: var(--newsColor);
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
 
@@ -25,6 +47,18 @@
 	  border: solid;
 	}
 
+}
+
+table{
+  width: 90%;
+  background-color: var(--policiesBackground);
+}
+
+.table-outer{
+  background-color: var(--policiesBackground);
+  border-style: solid;
+  border-color: var(--newsColor);
+  border-width: 2px;
 }
 
 /* Large devices (large desktops, 1200px and up) */
