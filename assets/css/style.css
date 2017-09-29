@@ -180,8 +180,6 @@ a{
 .news-ticker{
   background-color: var(--newsColor);
   height: 40px;
-  vertical-align: middle;
-  text-align: left;
   padding: 10px;
   color: #D5D5D5;
 }
@@ -232,7 +230,6 @@ nav{
   margin-right: 25%;
 
 }
-
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 

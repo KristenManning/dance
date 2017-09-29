@@ -1,12 +1,26 @@
-.reg-table{
-  width:50%;
-  border: solid;
-  margin: 5%;
+table > p{
   color: black;
 }
 
-table > p{
-  color: black;
+table{
+  background-color: var(--policiesBackground);
+}
+
+.table-outer{
+  background-color: var(--policiesBackground);
+  padding: 2%;
+}
+
+.table-outer table{
+  text-align: left;
+}
+
+td{
+  text-align: left;
+}
+
+.reg1, .reg2{
+  height: 500px;
 }
 
 #aside{
@@ -34,8 +48,7 @@ table > p{
 	  background-color: var(--policiesBackground) ;
 	  color: var(--newsColor) ;
 	  text-align: center;
-	  border: solid;
-	  border-width: 2px
+    height: 500px; 
 	}
 
 	.policies p{
@@ -47,18 +60,6 @@ table > p{
 	  border: solid;
 	}
 
-}
-
-table{
-  width: 90%;
-  background-color: var(--policiesBackground);
-}
-
-.table-outer{
-  background-color: var(--policiesBackground);
-  border-style: solid;
-  border-color: var(--newsColor);
-  border-width: 2px;
 }
 
 /* Large devices (large desktops, 1200px and up) */
