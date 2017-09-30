@@ -65,11 +65,20 @@
   font-weight: bolder;
 }
 
+.chalk-subheading{
+  opacity: 0.7; 
+  font-size: 35px;
+  color: var(--jazzColor);
+  text-align: center;
+  font-family: 'Caveat Brush', cursive;
+  font-weight: bolder;
+}
+
 .chalk-question{
   opacity: 0.7; 
   font-size: 40px;
   line-height: 60px;
-  color: var(--pointeColor);
+  color: var(--balletColor);
   font-family: 'Caveat Brush', cursive;
   font-weight: bolder;
   text-align: center;

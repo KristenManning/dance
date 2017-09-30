@@ -383,32 +383,21 @@ database.ref().on("value", function(snapshot) {
     database.ref().on("value", function(snapshot) {
     $("#news").html("")
     
-    var newsItem = snapshot.val()["news"];
-    for (var n in newsItem) {
-        var newNewsItem = $('<div class="news-box">')
-        var newNewsItem_headline = newsItem[n][0]
-        var newNewsItem_body = newsItem[n][1]
-        var newNewsItem_body2 = newsItem[n][2]
-        var newNewsItem_link = newsItem[n][3]
-        var newNewsItem_linktext = newsItem[n][4]
-        var newNewsItem_image = newsItem[n][5]
-        var newNewsItem_date = newsItem[n][6]
-        
-        newNewsItem.append("<h5 > " + newNewsItem_headline +  " </h5>")
-        newNewsItem.append("<p> " + newNewsItem_body +  " </p>")
-        newNewsItem.append("<p> " + newNewsItem_body2 +  " </p>")
-        newNewsItem.append("<a href = " + newNewsItem_link +  ">" + newNewsItem_linktext+ "</p>")
-        // Need to append image! 
-        newNewsItem.append('<p class="tiny-text date">' + newNewsItem_date +  '</p>')
+    var chalkItUp = snapshot.val()["news"];
+    var heading = chalkItUp[0][0]
+    var subheading = chalkItUp[0][1]
+    var question = chalkItUp[0][2]
+    $(".chalk-heading").text(heading)
+    $(".chalk-subheading").text(subheading)
+    $(".chalk-question").text(question)
 
-        console.log(newNewsItem)
-        if (newNewsItem_headline){
-            $("#news").prepend(newNewsItem)
-            $("#news").prepend("<br>")
+    for (var i = 2; i < 50; i++) {
+     if (chalkItUp[i][0]){
+        $(".chalk-items").append("<li>"+chalkItUp[i][0]+"</li>")
 
-        }
-
+     }
     }
+
     });
 
     database.ref().on("value", function(snapshot) {
