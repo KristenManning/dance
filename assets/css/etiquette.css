@@ -30,7 +30,7 @@
 }
 
 #about-subheading-etiquette{
-  font-size: 26px;
+  font-size: 28px;
   color: var(--newsColor);
   font-weight: bold;
   font-style:bold;
@@ -45,10 +45,11 @@
 #etiquette{
   height: 100%;
 }
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
 .about-section-etiquette{
-  height: 600px;
+  height: 450px;
   overflow: scroll;
   padding: 2%;
 }
@@ -86,7 +87,7 @@
 }
 
 #etiquette-image{
-  height: 500px;
+  height: 400px;
   width: auto;
 }
 
@@ -99,7 +100,7 @@
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
 .about-section-etiquette{
-  height: 600px;
+  height: 550px;
   overflow: scroll;
   padding: 2%;
 }
@@ -129,6 +130,14 @@
   background-color: var(--inactiveButtons);
 }
 
+.etiquette-image-wrapper{
+  text-align: center;
+}
+
+.etiquette-instructions{
+  text-align: center;
+}
+
 #about-subheading-etiquette{
   font-size: 26px;
   color: var(--newsColor);
@@ -137,7 +146,7 @@
 }
 
 #etiquette-image{
-  height: 500px;
+  height: 400px;
   width: auto;
 }
 

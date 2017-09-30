@@ -1,6 +1,11 @@
 
 .schedule{
   background-color: var(--pageHeadingColor);
+  --box-shadow-color-1: var(--pageHeadingColor);
+  --box-shadow-color-2: grey;
+  box-shadow: 0 2px 4px 0 var(--box-shadow-color), 0 3px 4px 0 var(--box-shadow-color);
+  box-shadow: 0 4px 8px 0 var(--box-shadow-color-1), 0 6px 20px 0 var(--box-shadow-color-2) ;
+
 }
 
 .schedule th, .schedule td{
@@ -8,6 +13,9 @@
   vertical-align: middle;
 }
 
+.schedule th{
+  color: white;
+}
 .class-tile{
   width: 85%;
   margin-left: 7.5%;
@@ -15,10 +23,14 @@
   padding: 2%;
   padding-left: 4%;
   text-align: left;
+  border-radius: 2px;
+/*-moz-box-shadow: 2px 2px white;
+-webkit-box-shadow: 2px 2px white;
+box-shadow: 2px 2px white;*/
 }
 
 .class-tile>p, .class-tile>h6, .class-tile>.tiny-text{
-  color: black;
+  color: var(--newsColor);
 }
 
 .song{
@@ -28,7 +40,7 @@
 .class-time{
   font-size: 18px;
   font-weight: bold;
-  color: black;
+  color: white;
 
 }
 
@@ -54,7 +66,7 @@
   }
 
   .class-tile>p, .class-tile>h6, .class-tile>.tiny-text{
-    color: black;
+    color: var(--newsColor);
   }
 
   .song{
@@ -64,7 +76,7 @@
   .class-time{
     font-size: 18px;
     font-weight: bold;
-    color: black;
+    color: white;
 
   }
 

@@ -71,6 +71,7 @@ $(document).ready(function() {
 
   var display_all_classes = function(sched){
       reset_tiles()
+      $("#displayed-style").text("All Class Offerings")
 
       for (var c in sched) {
       
@@ -105,7 +106,7 @@ $(document).ready(function() {
               var styling = sched[c][6]
               var tile = $(time + " > " + day + " > .class-tile")
               tile.html("")
-              tile.append("<h4>"+ tile_age + "</h4>")
+              tile.append("<h5>"+ tile_age + "</h5>")
               tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
               tile.addClass( styling + "-background" )
           }
@@ -134,7 +135,7 @@ $(document).ready(function() {
               var styling = sched[c][6]
               var tile = $(time + " > " + day + " > .class-tile")
               tile.html("")
-              tile.append("<h4>"+ tile_age + "</h4>")
+              tile.append("<h5>"+ tile_age + "</h5>")
               tile.append("<p class='tiny-text'>"+ tile_other + "</p>")
               tile.addClass( styling + "-background" )
           
@@ -263,6 +264,9 @@ $(document).ready(function() {
       $(".btn-etiquette").css("background-color", "var(--inactiveButtons)" )
       $(this).css("background-color", "var(--activeButtonColor)" )
 
+      $(".etiquette-image-wrapper").empty()
+      $(".etiquette-instructions").empty()
+
       var etiquetteType = $(this).data().etiquettetype;
       console.log($(this).val())
       $("#about-subheading-etiquette").html($(this).text() + " Etiquette")
@@ -327,7 +331,7 @@ database.ref().on("value", function(snapshot) {
     display_class_choices()
 
     $('.dance-classes').on("click", ".class-icon", function() {
-        $("#class-type").html($(this).text() + '<button id="exit-icon" class="glyphicon glyphicon-arrow-left"></button>')
+        $("#class-type").html($(this).text() + '<button id="exit-icon" class="glyphicon glyphicon-arrow-left"></button><hr>')
         $(".dance-classes").html("<div class='col-md-10 col-md-offset-1'><h5>" + classes[parseInt($(this).context.id)][1] + "</h5></div>")
         $(".click-instructions").text("")
     });

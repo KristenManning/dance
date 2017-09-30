@@ -3,35 +3,47 @@ table > p{
 }
 
 table{
+  margin-top: 2%;
   background-color: var(--policiesBackground);
-}
-
-.table-outer{
-  background-color: var(--policiesBackground);
-  padding: 2%;
-}
-
-.table-outer table{
-  text-align: left;
 }
 
 td{
   text-align: left;
+  font-size: 20px;
+  color: #383B40;
 }
 
-.reg1, .reg2{
-  height: 500px;
+h4{
+  color: black;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.policies p{
+  font-size: 18px;
+  color: #383B40;
+}
+
+.table-outer, .policies{
+  background-color: var(--policiesBackground);
+  padding: 2%;
+  margin-bottom: 2%;
+}
+
+.policies{
+  padding: 3%;
+}
+
+.table-outer, .policies{
+  text-align: left;
+  height: 450px;
 }
 
 #aside{
   text-align: right;
+  font-size: 16px;
   padding: 1%;
   color: white;
-}
-
-#reg-table-title{
-  padding: 1%;
-  color: var(--newsColor);
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -42,23 +54,6 @@ td{
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
-
-	.policies{
-	  padding: 3%;
-	  background-color: var(--policiesBackground) ;
-	  color: var(--newsColor) ;
-	  text-align: center;
-    height: 500px; 
-	}
-
-	.policies p{
-	  color: var(--policiesText);
-	  font-size: 18px;
-	}
-
-	#reg-iframe{
-	  border: solid;
-	}
 
 }
 
