@@ -30,8 +30,12 @@ body, html {
     height: 100%;
 }
 
+.studio-name a{
+  color: white;
+}
+
 body { 
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     background-image: url("../images/sequins-2b.jpg");
     background-position: top;
     background-repeat: no-repeat;
@@ -53,10 +57,14 @@ h1{
   color: white;
   padding: 3%;
   text-align: center;
+  font-family: 'Josefin Slab', serif;
+  font-weight: bold;
 }
 
 h2{
   font-size: 30px;
+  font-family: 'Josefin Slab', serif;
+  font-weight: bold;
 
 }
 
@@ -200,15 +208,11 @@ a{
 }
 
 .new-ticker>p{
-  color: #D5D5D5;
+  color: white;
 
 }
 .navbar-toggle{
   margin-left: 5%;
-}
-
-#logo{
-  display: none; 
 }
 
 #nav-and-news{
@@ -236,15 +240,11 @@ a{
 
 .studio-name{
   text-align: center;
-}
-.nav .brand{
-  font-size: 16px;
-  vertical-align: middle;
-  font-family: 'Petit Formal Script', cursive;
+  font-size: 46px;
+  font-family: 'Rouge Script', cursive;
   font-weight: bold;
-  color: var(--newsColor);
-  position: relative;
-  bottom: 10px;
+  background-color: var(--newsColor);
+  color: white;
 }
 
 nav{
@@ -254,7 +254,7 @@ nav{
   font-size: 20px;
   font-weight: bold;
 }
-.navbar-right>li {
+.navbar-nav>li {
     float: left;
     width: 100%;
 }
@@ -285,19 +285,28 @@ nav{
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-  .navbar-right>li {
+.studio-name{
+  text-align: center;
+  font-size: 46px;
+  line-height: 50px
+  vertical-align: middle;
+  font-family: 'Rouge Script', cursive;
+  font-weight: bold;
+  background-color: var(--newsColor);
+}
+
+nav{
+  background-color: var(--navColor);
+  opacity: 0.8;
+  color: var(--newsColor);
+  font-size: 20px;
+  font-weight: bold;
+}
+.navbar-nav>li {
     float: none;
     width: auto;
 }
 
-.nav .brand{
-  font-size: 44px;
-  line-height: 46px;
-  font-family: 'Petit Formal Script', cursive;
-  font-weight: bold;
-  color: var(--newsColor);
-  bottom: 0px;
-}
 
 }
 
@@ -306,7 +315,7 @@ nav{
   .nav .brand{
   font-size: 32px;
   line-height: 32px;
-  font-family: 'Petit Formal Script', cursive;
+  font-family: 'Rouge Script', cursive;
   font-weight: bold;
   color: var(--newsColor);
   }
@@ -450,29 +459,20 @@ body, html{
 }*/
 /*dark slate grey*/
 .main-content{
-/*  margin-left: 12%;
-  margin-right: 12%;
-  background-color: #BF75BB;*/
-  --box-shadow-color-1: black ;
-  --box-shadow-color-2: white;
-  /*box-shadow: 0 2px 4px 0 var(--box-shadow-color), 0 3px 4px 0 var(--box-shadow-color);*/
-  box-shadow: 0 10px 12px 0 var(--box-shadow-color-1), 0 10px 12px 0 var(--box-shadow-color-2) ;
-/*  box-shadow: 0 2px 4px 0, 0 3px 4px 0;*/
+-webkit-box-shadow: 3px 1px 50px 11px rgba(31,31,33,1);
+-moz-box-shadow: 3px 1px 50px 11px rgba(31,31,33,1);
+box-shadow: 3px 1px 50px 11px rgba(31,31,33,1);
 }
 
 button:focus {outline:0;}
 
 #logo{
-  height:80px;
+  height: 80px;
   width: auto;
-  margin: 0px;
-  padding: 0px;
-  text-align: center;
 }
 
 
- a{
-
+a{
   color: var(--newsColor);
 }
 

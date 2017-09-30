@@ -5,13 +5,26 @@
   --box-shadow-color-2: grey;
   box-shadow: 0 2px 4px 0 var(--box-shadow-color), 0 3px 4px 0 var(--box-shadow-color);
   box-shadow: 0 4px 8px 0 var(--box-shadow-color-1), 0 6px 20px 0 var(--box-shadow-color-2) ;
-
 }
 
 .schedule th, .schedule td{
   text-align: center;
   vertical-align: middle;
 }
+
+table{
+  width:100px;
+  overflow-x: scroll;
+}
+.table{
+  width: 100px;
+}
+
+.schedule{
+  width: 100px;
+  overflow-x: hidden;
+}
+
 
 .schedule th{
   color: white;
